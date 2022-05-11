@@ -1,224 +1,278 @@
 {
   "author": "Auca Maillot",
-  "description": "Acá una description en español | and here a description in English",
+  "description": "A Firebird module to connect Rocketbot with Firebird",
   "disclaimer": "THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.",
-  "version": "0.1.0",
+  "version": "0.1",
   "license": "MIT",
   "homepage": "http://rocketbot.co/",
+  "name": "Firebird",
   "linux": false,
   "windows": true,
   "mac": false,
   "docker": false,
   "dependencies": {
-    "google-api-python-client": "*",
-    "google-auth-httplib2": "*",
-    "google-auth-oauthlib": "*"
+    "fdb": "*"
   },
-  "name": "example",
   "title": {
-    "en": "Example Module",
-    "es": "Modulo de Ejemplo"
+    "en": "Firebird",
+    "es": "Firebird"
   },
-  "icon": "data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1OCA1OCIgaGVpZ2h0PSI1MTJweCIgdmlld0JveD0iMCAwIDU4IDU4IiB3aWR0aD0iNTEycHgiPjxwYXRoIGQ9Im0zNyAxNi04IDR2OGw4IDQgOC00di04eiIgZmlsbD0iIzk2MjkxYSIvPjxwYXRoIGQ9Im0yMSAxNi04IDR2OGw4IDQgOC00di04eiIgZmlsbD0iI2M0OTMxOCIvPjxwYXRoIGQ9Im0yOSAyOC04IDR2OGw4IDQgOC00di04eiIgZmlsbD0iI2MxNjkxYSIvPjxnIGZpbGw9IiM2MWI4NzIiPjxwYXRoIGQ9Im01My42ODIgMjYuMDMyYy0uNDgyIDAtLjkwOC0uMzUxLS45ODYtLjg0My0uMzA0LTEuOS0uODM2LTMuNzYtMS41ODMtNS41MjYtLjIxNS0uNTA5LjAyMi0xLjA5Ni41MzEtMS4zMTEuNTEtLjIxNiAxLjA5Ni4wMjIgMS4zMTEuNTMxLjgxIDEuOTE1IDEuMzg4IDMuOTMxIDEuNzE2IDUuOTkxLjA4Ny41NDUtLjI4NCAxLjA1OC0uODMgMS4xNDUtLjA1My4wMDktLjEwNy4wMTMtLjE1OS4wMTN6Ii8+PHBhdGggZD0ibTQ4Ljc5NSAxNC43MzNjLS4yOTkgMC0uNTk1LS4xMzQtLjc5Mi0uMzg5LTEuMjU4LTEuNjI5LTIuNzIzLTMuMDk0LTQuMzU1LTQuMzU0LS40MzctLjMzNy0uNTE4LS45NjUtLjE4LTEuNDAycy45NjYtLjUxNyAxLjQwMy0uMThjMS43NjcgMS4zNjQgMy4zNTMgMi45NSA0LjcxNSA0LjcxNC4zMzcuNDM4LjI1NyAxLjA2NS0uMTggMS40MDItLjE4Mi4xNDEtLjM5Ny4yMDktLjYxMS4yMDl6Ii8+PHBhdGggZD0ibTM4LjcyNiA2Ljk2N2MtLjEzIDAtLjI2Mi0uMDI1LS4zODktLjA3OS0xLjc2Ni0uNzQ3LTMuNjI2LTEuMjgtNS41MjctMS41ODQtLjU0NS0uMDg3LS45MTctLjYtLjgzLTEuMTQ2LjA4Ny0uNTQ1LjYwMS0uOTE4IDEuMTQ1LS44MjkgMi4wNjEuMzI5IDQuMDc2LjkwNyA1Ljk5MSAxLjcxNy41MDkuMjE1Ljc0Ny44MDIuNTMxIDEuMzExLS4xNjEuMzgxLS41MzEuNjEtLjkyMS42MXoiLz48cGF0aCBkPSJtMzIuOTY3IDU0LjY4NGMtLjQ4MyAwLS45MDgtLjM1MS0uOTg2LS44NDItLjA4Ny0uNTQ2LjI4NC0xLjA1OS44My0xLjE0NiAxLjkwMS0uMzA0IDMuNzYxLS44MzcgNS41MjctMS41ODQuNTEtLjIxNCAxLjA5Ni4wMjEgMS4zMTEuNTMxLjIxNS41MDktLjAyMiAxLjA5Ni0uNTMxIDEuMzExLTEuOTE1LjgxLTMuOTMgMS4zODgtNS45OTEgMS43MTctLjA1NS4wMDktLjEwOC4wMTMtLjE2LjAxM3oiLz48cGF0aCBkPSJtNDQuMjY3IDQ5Ljc5NWMtLjI5OSAwLS41OTUtLjEzNC0uNzkyLS4zODktLjMzNy0uNDM4LS4yNTctMS4wNjUuMTgtMS40MDIgMS42My0xLjI1OSAzLjA5NS0yLjcyNSA0LjM1NC00LjM1Ni4zMzYtLjQzOC45NjQtLjUxNyAxLjQwMi0uMTgxLjQzOC4zMzguNTE4Ljk2Ni4xODEgMS40MDMtMS4zNjMgMS43NjctMi45NDkgMy4zNTQtNC43MTQgNC43MTYtLjE4Mi4xNDEtLjM5Ny4yMDktLjYxMS4yMDl6Ii8+PHBhdGggZD0ibTUyLjAzMyAzOS43MjdjLS4xMyAwLS4yNjItLjAyNS0uMzg5LS4wNzktLjUwOS0uMjE1LS43NDctLjgwMi0uNTMxLTEuMzExLjc0Ny0xLjc2NyAxLjI4LTMuNjI2IDEuNTgzLTUuNTI2LjA4Ni0uNTQ2LjYwMS0uOTE5IDEuMTQ1LS44My41NDUuMDg3LjkxNy42LjgzIDEuMTQ1LS4zMjkgMi4wNjEtLjkwNiA0LjA3Ni0xLjcxNiA1Ljk5MS0uMTYyLjM4MS0uNTMzLjYxLS45MjIuNjF6Ii8+PHBhdGggZD0ibTUuOTY3IDM5LjcyN2MtLjM5IDAtLjc2LS4yMjktLjkyMS0uNjEtLjgxLTEuOTE1LTEuMzg4LTMuOTMxLTEuNzE2LTUuOTkxLS4wODctLjU0NS4yODQtMS4wNTguODMtMS4xNDUuNTQtLjA4OSAxLjA1OS4yODQgMS4xNDUuODMuMzA0IDEuOS44MzYgMy43NiAxLjU4MyA1LjUyNi4yMTUuNTA5LS4wMjIgMS4wOTYtLjUzMSAxLjMxMS0uMTI4LjA1My0uMjYuMDc5LS4zOS4wNzl6Ii8+PHBhdGggZD0ibTEzLjc0IDQ5LjgwMWMtLjIxNCAwLS40MjktLjA2OC0uNjExLS4yMDktMS43NjctMS4zNjQtMy4zNTMtMi45NS00LjcxNS00LjcxNC0uMzM3LS40MzgtLjI1Ny0xLjA2NS4xOC0xLjQwMi40MzctLjMzOCAxLjA2NC0uMjU4IDEuNDAzLjE4IDEuMjU4IDEuNjI5IDIuNzIzIDMuMDk0IDQuMzU1IDQuMzU0LjQzNy4zMzcuNTE4Ljk2NS4xOCAxLjQwMi0uMTk3LjI1NS0uNDkzLjM4OS0uNzkyLjM4OXoiLz48cGF0aCBkPSJtMjUuMDMzIDU0LjY4NGMtLjA1MiAwLS4xMDUtLjAwNC0uMTU5LS4wMTMtMi4wNjEtLjMyOS00LjA3Ni0uOTA3LTUuOTkxLTEuNzE3LS41MDktLjIxNS0uNzQ3LS44MDItLjUzMS0xLjMxMS4yMTUtLjUxLjgwMS0uNzQ1IDEuMzExLS41MzEgMS43NjYuNzQ3IDMuNjI2IDEuMjggNS41MjcgMS41ODQuNTQ1LjA4Ny45MTcuNi44MyAxLjE0Ni0uMDc5LjQ5MS0uNTA0Ljg0Mi0uOTg3Ljg0MnoiLz48cGF0aCBkPSJtMTkuMjc0IDYuOTY3Yy0uMzkgMC0uNzYtLjIyOS0uOTIxLS42MS0uMjE1LS41MDkuMDIyLTEuMDk2LjUzMS0xLjMxMSAxLjkxNS0uODEgMy45My0xLjM4OCA1Ljk5MS0xLjcxNy41NDUtLjA4OSAxLjA1OC4yODUgMS4xNDUuODI5LjA4Ny41NDYtLjI4NCAxLjA1OS0uODMgMS4xNDYtMS45MDEuMzA0LTMuNzYxLjgzNy01LjUyNyAxLjU4NC0uMTI3LjA1My0uMjU5LjA3OS0uMzg5LjA3OXoiLz48cGF0aCBkPSJtOS4xOTkgMTQuNzQxYy0uMjEzIDAtLjQyOC0uMDY4LS42MS0uMjA4LS40MzgtLjMzOC0uNTE4LS45NjYtLjE4MS0xLjQwMyAxLjM2My0xLjc2NyAyLjk0OS0zLjM1NCA0LjcxNC00LjcxNi40MzctLjMzNyAxLjA2NC0uMjU4IDEuNDAzLjE4LjMzNy40MzguMjU3IDEuMDY1LS4xOCAxLjQwMi0xLjYzIDEuMjU5LTMuMDk1IDIuNzI1LTQuMzU0IDQuMzU2LS4xOTcuMjU1LS40OTIuMzg5LS43OTIuMzg5eiIvPjxwYXRoIGQ9Im00LjMxOCAyNi4wMzJjLS4wNTMgMC0uMTA1LS4wMDQtLjE1OS0uMDEzLS41NDUtLjA4Ny0uOTE3LS42LS44My0xLjE0NS4zMjktMi4wNjEuOTA2LTQuMDc2IDEuNzE2LTUuOTkxLjIxNS0uNTA5LjgwMS0uNzQ3IDEuMzExLS41MzEuNTA5LjIxNS43NDcuODAyLjUzMSAxLjMxMS0uNzQ3IDEuNzY3LTEuMjggMy42MjYtMS41ODMgNS41MjYtLjA3OC40OTMtLjUwMy44NDMtLjk4Ni44NDN6Ii8+PC9nPjxjaXJjbGUgY3g9IjQiIGN5PSIyOSIgZmlsbD0iI2RkMzUyZSIgcj0iNCIvPjxjaXJjbGUgY3g9IjU0IiBjeT0iMjkiIGZpbGw9IiNkZDM1MmUiIHI9IjQiLz48Y2lyY2xlIGN4PSIyOSIgY3k9IjU0IiBmaWxsPSIjZGQzNTJlIiByPSI0Ii8+PGNpcmNsZSBjeD0iMjkiIGN5PSI0IiBmaWxsPSIjZGQzNTJlIiByPSI0Ii8+PHBhdGggZD0ibTIxIDMyLTgtNHYtOGw4IDR6IiBmaWxsPSIjZDhhNTE2Ii8+PHBhdGggZD0ibTIxIDMyIDgtNHYtOGwtOCA0eiIgZmlsbD0iI2ViYmExNiIvPjxwYXRoIGQ9Im0yMSAyNC04LTQgOC00IDggNHoiIGZpbGw9IiNjNDkzMTgiLz48cGF0aCBkPSJtMzcgMzItOC00di04bDggNHoiIGZpbGw9IiNjNTQxMWUiLz48cGF0aCBkPSJtMzcgMzIgOC00di04bC04IDR6IiBmaWxsPSIjYWYzMzFiIi8+PHBhdGggZD0ibTM3IDI0LTgtNCA4LTQgOCA0eiIgZmlsbD0iIzk2MjkxYSIvPjxwYXRoIGQ9Im0yOSA0NC04LTR2LThsOCA0eiIgZmlsbD0iI2VkOGExOSIvPjxwYXRoIGQ9Im0yOSA0NCA4LTR2LThsLTggNHoiIGZpbGw9IiNkMzc2MWEiLz48cGF0aCBkPSJtMjkgMzYtOC00IDgtNCA4IDR6IiBmaWxsPSIjYzE2OTFhIi8+PC9zdmc+Cg==",
+  "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAT2SURBVHjaYvz//z8DEeD/30dAxMiqB2L/vgQkmdhsiNEIEEAs+KX/ftvy9/sWBkYGJg5bZg5fRkY+kCizHFDw55t0JmY5Zk5fZp4YRiY+XCYABBDDfxzg94cl3+5p/XyZ/u/3Q1xq/n47/OOx57fb0r/etP37+xGrGoAAwmLBvz8ff9z1/HZD6++Xw/+JAH8+bfl2TRqk/jMW9QABhG7B36+Xvp2R+n7FEmjNf6IBUPH3q5ZfT3P/fr0ETQoggFAs+Pv50rdjUj+uRfwnC/y4HvH1MPfvFyh2AAQQwoJ/vz9+O6L1/aQVkEGeBUCNQO1f9/L8ebUFLggQQAgLfpyO+LZT+t83LFH682r51608P85E/Hm+Bb8df98eBqr8tksa7kqAAGKCpKV/r4/8fbiZRTaLkVMOPZn9/vT/7UVGZjmGbx9+Hg//vkX654nIP3emAbX8OpuBpphJyIZZyOf/lw+/L5ZBRAACiBGS0X7u9vz34RJHwHVGVkSK/vtky6+T6f9/f8RM3Ky6Vf+/PmLklmPVrkLPOk+3/DwcAWRw+l4DKgAIIJAP/r27/PfREWa5WGTT/3959HNP5P/Pnxh+MGKiv3e2sqhkY5oO8oSYHUTN76vTgFyAAAJZ8OfaUoafDCyyPigK2QQY//MDxYEks4gthA1H/15c+rHa6u/9rZgWgFwJVvP39mYgFyCAwD64f4jhx39GET0UdWx87L7bWZSjOaKvsftsA5JMfHoMPxiQ0a+d6diLB7Ds/zeP/r2+DBBAoLLo3+NLEBPRPSuiy+YyA24fk5jNv0cXUeL/xwccFkAL0P8fHgIEEMu/F5cZfjISKEp/fPpzcuqfo8AwRVHJyMGPRfHHR3AD/z27DBBALAzfPjL8xFli///w6Peetj/nl2KVZdbxwVIA3z0MigMohwEggFgY/oGDDGjb08tM0rrISv+cXvprZTq+st4yG1Pw363DCBf/+Q8QQCwMQG9CLLh5GNmCv5e2/FqE13THbCZJXXQfv3v05+gSJO8wAAQQE5OMLjRVndqMrPTXsnK0NIOMmBVs2YI6MW39tRxFF6OAPEAAgZIpkzgo/f29ePj/60dQb9448v/pQzwWsMXPxGL6rIy/JzYjK2OS1gMIILAFaragUPv5//eKVlhA/oeI4ESoyeLftcM/Gzz+7FmMrIaRhY9JThcggFjAoRnze+0UIOP3jiXMDjHMurYg/b/wJdwfVR6svqAY/vfq0b8rh/49uIQljdn4AkmAAIIWdt9itP6/eAjii8tzzjrx797FH2UeDJQBjq4dQLcCBBC0uGbP6ILm74cPf00oZRKTRy55yEDMmragkGBgAAggFph3fID8v2cOg9LuhiVMynqMgvL/nz8k2/lsWd0QBkAAMcGF2LtXgQpCYDHy4//f44eY9WwZfv0nD7HldTGpQLMIQAAxIrfs/t24/CPG/f8nUA3DsXTHj0RyooElIIa9BZGIAQKICaX41NDlWLyTkQ2Ut/9u28Js50tq0LP4oJgOBAABxIjZNv3/5NHP3LS/Rw9zLFr5a0Lrv6uXiA33xi7WJPTSCSCAcDcdly3+Zm3+5/Ch7/HhX0S58KPvAe7/HmNvYQIEEAOBZuGmzSBy62agZV94OdHQV22NnxWlfy9fwmMCQAAxEtl8BwXdo0d/Dx36/wCUdpns7Zjk5Rnl5AjqAggwAB4FwGj3ntBVAAAAAElFTkSuQmCC",
   "children": [
     {
-      "title": {
-        "en": "View example",
-        "es": "Vista de ejemplo"
+      "en": {
+        "title": "Connect to a Firebird DB",
+        "description": "Configurate connection credentials",
+        "title_options": null,
+        "options": null
       },
-      "description": {
-        "en": "Culpa reprehenderit occaecat velit nisi minim ipsum nostrud consequat excepteur proident mollit. Pariatur cupidatat commodo eiusmod id ex nostrud veniam. Tempor fugiat eiusmod nostrud sit ullamco duis quis minim dolore esse sunt excepteur enim enim. Nulla laborum enim consectetur reprehenderit dolore aliquip esse eu elit et quis nisi nulla. Nulla proident dolor irure quis eiusmod minim consectetur.",
-        "es": "Culpa reprehenderit occaecat velit nisi minim ipsum nostrud consequat excepteur proident mollit. Pariatur cupidatat commodo eiusmod id ex nostrud veniam. Tempor fugiat eiusmod nostrud sit ullamco duis quis minim dolore esse sunt excepteur enim enim. Nulla laborum enim consectetur reprehenderit dolore aliquip esse eu elit et quis nisi nulla. Nulla proident dolor irure quis eiusmod minim consectetur."
+      "es": {
+        "title": "Conectarse a bd Firebird",
+        "description": "Configurar credenciales de conexión",
+        "title_options": null,
+        "options": null
       },
       "form": {
         "css": "modal-lg",
-        "style": "min-width:1024px;",
         "inputs": [
           {
             "type": "input",
-            "placeholder": "this is a placeholder",
+            "placeholder": "Conn1",
             "title": {
-              "en": "Input text:",
-              "es": "Entrada de texto:"
+              "es": "Sesión:",
+              "en": "Session:"
             },
-            "id": "input_1",
+            "description": {
+              "es": "Nombre que se desea poner a la sesión",
+              "en": "Name for identify the session"
+            },
+            "id": "session",
             "css": "col-md-6"
           },
           {
-            "type": "select",
+            "type": "input",
+            "placeholder": "sys",
             "title": {
-              "es": "Selector de datos:",
-              "en": "Input select:"
+              "es": "Usuario:",
+              "en": "User:"
             },
-            "options": [
-              {
-                "title": "--Seleccione--",
-                "value": ""
-              },
-              {
-                "title": "name",
-                "value": "name"
-              },
-              {
-                "title": "class",
-                "value": "class"
-              }
-            ],
-            "help": {
-              "es": "Help example",
-              "en": "Help example",
-              "cn": "Help example"
+            "description": {
+              "es": "Nombre de usuario de la base de datos",
+              "en": "Name of the user to connect to the data base"
             },
-            "id": "option_",
+            "id": "user",
             "css": "col-md-6"
           },
           {
-            "type": "file_select",
-            "placeholder": {
-              "es": "Ruta a archivo",
-              "en": "Path to file"
-            },
+            "type": "input",
+            "placeholder": "password",
             "title": {
-              "es": "Seleccionar un archivo:",
-              "en": "Select a file:"
+              "es": "Contraseña:",
+              "en": "Password:"
             },
-            "help": {
-              "es": "Ruta donde está el archivo",
-              "en": "Path to file"
+            "description": {
+              "es": "Password del usuario previamente usado",
+              "en": "Password from the user previously used"
             },
-            "id": "pdf",
-            "css": "col-md-6"
+            "id": "password",
+            "css": "col-md-4"
           },
           {
-            "type": "file_new",
-            "placeholder": {
-              "es": "Archivo nuevo",
-              "en": "New File"
-            },
+            "type": "input",
+            "placeholder": "Firebird.host.com/ORCL",
             "title": {
-              "es": "Crear Archivo Nuevo:",
-              "en": "Create new file:"
+              "es": "DSN Hostname de Conexion:",
+              "en": "DSN Hostname:"
             },
-            "help": {
-              "es": "Ruta donde se creara el archivo nuevo",
-              "en": "Path to new file"
+            "description": {
+              "es": "Hostname asignado en el DSN",
+              "en": "Hostname from the DSN"
             },
-            "id": "pdf",
-            "css": "col-md-6"
+            "id": "dsnHostname",
+            "css": "col-md-4"
           },
           {
-            "type": "folder_select",
-            "placeholder": {
-              "es": "Ruta a Carpeta",
-              "en": "Path to folder"
-            },
+            "type": "input",
+            "placeholder": "1521",
             "title": {
-              "es": "Seleccionar una carpeta:",
-              "en": "Select a Folder:"
+              "es": "DSN Puerto de Conexion:",
+              "en": "DSN Port:"
             },
-            "help": {
-              "es": "Ruta a la carpeta",
-              "en": "Path to folder"
+            "description": {
+              "es": "Puerto asignado en el DSN",
+              "en": "Port from the DSN"
             },
-            "id": "folder",
-            "css": "col-md-6"
+            "id": "dsnPort",
+            "css": "col-md-4"
           },
           {
-            "type": "checkbox",
-            "placeholder": {
-              "es": "Checkbox",
-              "en": "Checkbox"
-            },
+            "type": "input",
+            "placeholder": "pdborcl / pdborcl.example.com",
             "title": {
-              "es": "Checkbox title:",
-              "en": "Checkbox title:"
+              "es": "DSN SID / Service name de Conexion:",
+              "en": "DSN SID / Service name:"
+            },
+            "description": {
+              "es": "SID o nombre de servicio asignado en el DSN",
+              "en": "SID or service name from the DSN"
+            },
+            "id": "dsnSID",
+            "css": "col-md-4"
+          },
+          {
+            "type": "input",
+            "placeholder": "var",
+            "title": {
+              "es": "Asignar a variable:",
+              "en": "Assign to variable:"
+            },
+            "description": {
+              "es": "Variable donde se desea guardar el resultado.",
+              "en": "Varialbe where to store the result."
             },
             "help": {
-              "es": "Ayuda de Checkbox",
-              "en": "Checkbox help"
+              "es": "Nombre de variable sin {}",
+              "en": "Variable name without {}"
             },
-            "id": "check",
-            "css": "col-md-6"
-          },
-          {
-            "type": "textarea",
-            "placeholder": {
-              "es": "Textarea placeholder",
-              "en": "Textarea placeholder"
-            },
-            "title": {
-              "es": "Textarea title:",
-              "en": "Textarea  title:"
-            },
-            "help": {
-              "es": "Ayuda de Textarea",
-              "en": "Textarea help"
-            },
-            "id": "Textarea",
-            "css": "col-md-6"
-          },
-          {
-            "type": "label",
-            "title": {
-              "es": "Qui non minim et do non amet consectetur culpa commodo incididunt cillum. Aliquip consequat deserunt incididunt nulla ex elit proident laborum.",
-              "en": "Qui non minim et do non amet consectetur culpa commodo incididunt cillum. Aliquip consequat deserunt incididunt nulla ex elit proident laborum."
-            },
-            "id": "label",
-            "css": "col-md-6"
+            "id": "result",
+            "css": "col-md-4"
           }
         ]
       },
-      "video_youtube": "aMV6cXPMMSo",
-      "icon": "data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1OCA1OCIgaGVpZ2h0PSI1MTJweCIgdmlld0JveD0iMCAwIDU4IDU4IiB3aWR0aD0iNTEycHgiPjxwYXRoIGQ9Im0zNyAxNi04IDR2OGw4IDQgOC00di04eiIgZmlsbD0iIzk2MjkxYSIvPjxwYXRoIGQ9Im0yMSAxNi04IDR2OGw4IDQgOC00di04eiIgZmlsbD0iI2M0OTMxOCIvPjxwYXRoIGQ9Im0yOSAyOC04IDR2OGw4IDQgOC00di04eiIgZmlsbD0iI2MxNjkxYSIvPjxnIGZpbGw9IiM2MWI4NzIiPjxwYXRoIGQ9Im01My42ODIgMjYuMDMyYy0uNDgyIDAtLjkwOC0uMzUxLS45ODYtLjg0My0uMzA0LTEuOS0uODM2LTMuNzYtMS41ODMtNS41MjYtLjIxNS0uNTA5LjAyMi0xLjA5Ni41MzEtMS4zMTEuNTEtLjIxNiAxLjA5Ni4wMjIgMS4zMTEuNTMxLjgxIDEuOTE1IDEuMzg4IDMuOTMxIDEuNzE2IDUuOTkxLjA4Ny41NDUtLjI4NCAxLjA1OC0uODMgMS4xNDUtLjA1My4wMDktLjEwNy4wMTMtLjE1OS4wMTN6Ii8+PHBhdGggZD0ibTQ4Ljc5NSAxNC43MzNjLS4yOTkgMC0uNTk1LS4xMzQtLjc5Mi0uMzg5LTEuMjU4LTEuNjI5LTIuNzIzLTMuMDk0LTQuMzU1LTQuMzU0LS40MzctLjMzNy0uNTE4LS45NjUtLjE4LTEuNDAycy45NjYtLjUxNyAxLjQwMy0uMThjMS43NjcgMS4zNjQgMy4zNTMgMi45NSA0LjcxNSA0LjcxNC4zMzcuNDM4LjI1NyAxLjA2NS0uMTggMS40MDItLjE4Mi4xNDEtLjM5Ny4yMDktLjYxMS4yMDl6Ii8+PHBhdGggZD0ibTM4LjcyNiA2Ljk2N2MtLjEzIDAtLjI2Mi0uMDI1LS4zODktLjA3OS0xLjc2Ni0uNzQ3LTMuNjI2LTEuMjgtNS41MjctMS41ODQtLjU0NS0uMDg3LS45MTctLjYtLjgzLTEuMTQ2LjA4Ny0uNTQ1LjYwMS0uOTE4IDEuMTQ1LS44MjkgMi4wNjEuMzI5IDQuMDc2LjkwNyA1Ljk5MSAxLjcxNy41MDkuMjE1Ljc0Ny44MDIuNTMxIDEuMzExLS4xNjEuMzgxLS41MzEuNjEtLjkyMS42MXoiLz48cGF0aCBkPSJtMzIuOTY3IDU0LjY4NGMtLjQ4MyAwLS45MDgtLjM1MS0uOTg2LS44NDItLjA4Ny0uNTQ2LjI4NC0xLjA1OS44My0xLjE0NiAxLjkwMS0uMzA0IDMuNzYxLS44MzcgNS41MjctMS41ODQuNTEtLjIxNCAxLjA5Ni4wMjEgMS4zMTEuNTMxLjIxNS41MDktLjAyMiAxLjA5Ni0uNTMxIDEuMzExLTEuOTE1LjgxLTMuOTMgMS4zODgtNS45OTEgMS43MTctLjA1NS4wMDktLjEwOC4wMTMtLjE2LjAxM3oiLz48cGF0aCBkPSJtNDQuMjY3IDQ5Ljc5NWMtLjI5OSAwLS41OTUtLjEzNC0uNzkyLS4zODktLjMzNy0uNDM4LS4yNTctMS4wNjUuMTgtMS40MDIgMS42My0xLjI1OSAzLjA5NS0yLjcyNSA0LjM1NC00LjM1Ni4zMzYtLjQzOC45NjQtLjUxNyAxLjQwMi0uMTgxLjQzOC4zMzguNTE4Ljk2Ni4xODEgMS40MDMtMS4zNjMgMS43NjctMi45NDkgMy4zNTQtNC43MTQgNC43MTYtLjE4Mi4xNDEtLjM5Ny4yMDktLjYxMS4yMDl6Ii8+PHBhdGggZD0ibTUyLjAzMyAzOS43MjdjLS4xMyAwLS4yNjItLjAyNS0uMzg5LS4wNzktLjUwOS0uMjE1LS43NDctLjgwMi0uNTMxLTEuMzExLjc0Ny0xLjc2NyAxLjI4LTMuNjI2IDEuNTgzLTUuNTI2LjA4Ni0uNTQ2LjYwMS0uOTE5IDEuMTQ1LS44My41NDUuMDg3LjkxNy42LjgzIDEuMTQ1LS4zMjkgMi4wNjEtLjkwNiA0LjA3Ni0xLjcxNiA1Ljk5MS0uMTYyLjM4MS0uNTMzLjYxLS45MjIuNjF6Ii8+PHBhdGggZD0ibTUuOTY3IDM5LjcyN2MtLjM5IDAtLjc2LS4yMjktLjkyMS0uNjEtLjgxLTEuOTE1LTEuMzg4LTMuOTMxLTEuNzE2LTUuOTkxLS4wODctLjU0NS4yODQtMS4wNTguODMtMS4xNDUuNTQtLjA4OSAxLjA1OS4yODQgMS4xNDUuODMuMzA0IDEuOS44MzYgMy43NiAxLjU4MyA1LjUyNi4yMTUuNTA5LS4wMjIgMS4wOTYtLjUzMSAxLjMxMS0uMTI4LjA1My0uMjYuMDc5LS4zOS4wNzl6Ii8+PHBhdGggZD0ibTEzLjc0IDQ5LjgwMWMtLjIxNCAwLS40MjktLjA2OC0uNjExLS4yMDktMS43NjctMS4zNjQtMy4zNTMtMi45NS00LjcxNS00LjcxNC0uMzM3LS40MzgtLjI1Ny0xLjA2NS4xOC0xLjQwMi40MzctLjMzOCAxLjA2NC0uMjU4IDEuNDAzLjE4IDEuMjU4IDEuNjI5IDIuNzIzIDMuMDk0IDQuMzU1IDQuMzU0LjQzNy4zMzcuNTE4Ljk2NS4xOCAxLjQwMi0uMTk3LjI1NS0uNDkzLjM4OS0uNzkyLjM4OXoiLz48cGF0aCBkPSJtMjUuMDMzIDU0LjY4NGMtLjA1MiAwLS4xMDUtLjAwNC0uMTU5LS4wMTMtMi4wNjEtLjMyOS00LjA3Ni0uOTA3LTUuOTkxLTEuNzE3LS41MDktLjIxNS0uNzQ3LS44MDItLjUzMS0xLjMxMS4yMTUtLjUxLjgwMS0uNzQ1IDEuMzExLS41MzEgMS43NjYuNzQ3IDMuNjI2IDEuMjggNS41MjcgMS41ODQuNTQ1LjA4Ny45MTcuNi44MyAxLjE0Ni0uMDc5LjQ5MS0uNTA0Ljg0Mi0uOTg3Ljg0MnoiLz48cGF0aCBkPSJtMTkuMjc0IDYuOTY3Yy0uMzkgMC0uNzYtLjIyOS0uOTIxLS42MS0uMjE1LS41MDkuMDIyLTEuMDk2LjUzMS0xLjMxMSAxLjkxNS0uODEgMy45My0xLjM4OCA1Ljk5MS0xLjcxNy41NDUtLjA4OSAxLjA1OC4yODUgMS4xNDUuODI5LjA4Ny41NDYtLjI4NCAxLjA1OS0uODMgMS4xNDYtMS45MDEuMzA0LTMuNzYxLjgzNy01LjUyNyAxLjU4NC0uMTI3LjA1My0uMjU5LjA3OS0uMzg5LjA3OXoiLz48cGF0aCBkPSJtOS4xOTkgMTQuNzQxYy0uMjEzIDAtLjQyOC0uMDY4LS42MS0uMjA4LS40MzgtLjMzOC0uNTE4LS45NjYtLjE4MS0xLjQwMyAxLjM2My0xLjc2NyAyLjk0OS0zLjM1NCA0LjcxNC00LjcxNi40MzctLjMzNyAxLjA2NC0uMjU4IDEuNDAzLjE4LjMzNy40MzguMjU3IDEuMDY1LS4xOCAxLjQwMi0xLjYzIDEuMjU5LTMuMDk1IDIuNzI1LTQuMzU0IDQuMzU2LS4xOTcuMjU1LS40OTIuMzg5LS43OTIuMzg5eiIvPjxwYXRoIGQ9Im00LjMxOCAyNi4wMzJjLS4wNTMgMC0uMTA1LS4wMDQtLjE1OS0uMDEzLS41NDUtLjA4Ny0uOTE3LS42LS44My0xLjE0NS4zMjktMi4wNjEuOTA2LTQuMDc2IDEuNzE2LTUuOTkxLjIxNS0uNTA5LjgwMS0uNzQ3IDEuMzExLS41MzEuNTA5LjIxNS43NDcuODAyLjUzMSAxLjMxMS0uNzQ3IDEuNzY3LTEuMjggMy42MjYtMS41ODMgNS41MjYtLjA3OC40OTMtLjUwMy44NDMtLjk4Ni44NDN6Ii8+PC9nPjxjaXJjbGUgY3g9IjQiIGN5PSIyOSIgZmlsbD0iI2RkMzUyZSIgcj0iNCIvPjxjaXJjbGUgY3g9IjU0IiBjeT0iMjkiIGZpbGw9IiNkZDM1MmUiIHI9IjQiLz48Y2lyY2xlIGN4PSIyOSIgY3k9IjU0IiBmaWxsPSIjZGQzNTJlIiByPSI0Ii8+PGNpcmNsZSBjeD0iMjkiIGN5PSI0IiBmaWxsPSIjZGQzNTJlIiByPSI0Ii8+PHBhdGggZD0ibTIxIDMyLTgtNHYtOGw4IDR6IiBmaWxsPSIjZDhhNTE2Ii8+PHBhdGggZD0ibTIxIDMyIDgtNHYtOGwtOCA0eiIgZmlsbD0iI2ViYmExNiIvPjxwYXRoIGQ9Im0yMSAyNC04LTQgOC00IDggNHoiIGZpbGw9IiNjNDkzMTgiLz48cGF0aCBkPSJtMzcgMzItOC00di04bDggNHoiIGZpbGw9IiNjNTQxMWUiLz48cGF0aCBkPSJtMzcgMzIgOC00di04bC04IDR6IiBmaWxsPSIjYWYzMzFiIi8+PHBhdGggZD0ibTM3IDI0LTgtNCA4LTQgOCA0eiIgZmlsbD0iIzk2MjkxYSIvPjxwYXRoIGQ9Im0yOSA0NC04LTR2LThsOCA0eiIgZmlsbD0iI2VkOGExOSIvPjxwYXRoIGQ9Im0yOSA0NCA4LTR2LThsLTggNHoiIGZpbGw9IiNkMzc2MWEiLz48cGF0aCBkPSJtMjkgMzYtOC00IDgtNCA4IDR6IiBmaWxsPSIjYzE2OTFhIi8+PC9zdmc+Cg==",
-      "module": "example_view",
-      "module_name": "example",
+      "video_youtube": "",
+      "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAT2SURBVHjaYvz//z8DEeD/30dAxMiqB2L/vgQkmdhsiNEIEEAs+KX/ftvy9/sWBkYGJg5bZg5fRkY+kCizHFDw55t0JmY5Zk5fZp4YRiY+XCYABBDDfxzg94cl3+5p/XyZ/u/3Q1xq/n47/OOx57fb0r/etP37+xGrGoAAwmLBvz8ff9z1/HZD6++Xw/+JAH8+bfl2TRqk/jMW9QABhG7B36+Xvp2R+n7FEmjNf6IBUPH3q5ZfT3P/fr0ETQoggFAs+Pv50rdjUj+uRfwnC/y4HvH1MPfvFyh2AAQQwoJ/vz9+O6L1/aQVkEGeBUCNQO1f9/L8ebUFLggQQAgLfpyO+LZT+t83LFH682r51608P85E/Hm+Bb8df98eBqr8tksa7kqAAGKCpKV/r4/8fbiZRTaLkVMOPZn9/vT/7UVGZjmGbx9+Hg//vkX654nIP3emAbX8OpuBpphJyIZZyOf/lw+/L5ZBRAACiBGS0X7u9vz34RJHwHVGVkSK/vtky6+T6f9/f8RM3Ky6Vf+/PmLklmPVrkLPOk+3/DwcAWRw+l4DKgAIIJAP/r27/PfREWa5WGTT/3959HNP5P/Pnxh+MGKiv3e2sqhkY5oO8oSYHUTN76vTgFyAAAJZ8OfaUoafDCyyPigK2QQY//MDxYEks4gthA1H/15c+rHa6u/9rZgWgFwJVvP39mYgFyCAwD64f4jhx39GET0UdWx87L7bWZSjOaKvsftsA5JMfHoMPxiQ0a+d6diLB7Ds/zeP/r2+DBBAoLLo3+NLEBPRPSuiy+YyA24fk5jNv0cXUeL/xwccFkAL0P8fHgIEEMu/F5cZfjISKEp/fPpzcuqfo8AwRVHJyMGPRfHHR3AD/z27DBBALAzfPjL8xFli///w6Peetj/nl2KVZdbxwVIA3z0MigMohwEggFgY/oGDDGjb08tM0rrISv+cXvprZTq+st4yG1Pw363DCBf/+Q8QQCwMQG9CLLh5GNmCv5e2/FqE13THbCZJXXQfv3v05+gSJO8wAAQQE5OMLjRVndqMrPTXsnK0NIOMmBVs2YI6MW39tRxFF6OAPEAAgZIpkzgo/f29ePj/60dQb9448v/pQzwWsMXPxGL6rIy/JzYjK2OS1gMIILAFaragUPv5//eKVlhA/oeI4ESoyeLftcM/Gzz+7FmMrIaRhY9JThcggFjAoRnze+0UIOP3jiXMDjHMurYg/b/wJdwfVR6svqAY/vfq0b8rh/49uIQljdn4AkmAAIIWdt9itP6/eAjii8tzzjrx797FH2UeDJQBjq4dQLcCBBC0uGbP6ILm74cPf00oZRKTRy55yEDMmragkGBgAAggFph3fID8v2cOg9LuhiVMynqMgvL/nz8k2/lsWd0QBkAAMcGF2LtXgQpCYDHy4//f44eY9WwZfv0nD7HldTGpQLMIQAAxIrfs/t24/CPG/f8nUA3DsXTHj0RyooElIIa9BZGIAQKICaX41NDlWLyTkQ2Ut/9u28Js50tq0LP4oJgOBAABxIjZNv3/5NHP3LS/Rw9zLFr5a0Lrv6uXiA33xi7WJPTSCSCAcDcdly3+Zm3+5/Ch7/HhX0S58KPvAe7/HmNvYQIEEAOBZuGmzSBy62agZV94OdHQV22NnxWlfy9fwmMCQAAxEtl8BwXdo0d/Dx36/wCUdpns7Zjk5Rnl5AjqAggwAB4FwGj3ntBVAAAAAElFTkSuQmCC",
+      "module": "connect",
+      "module_name": "Firebird",
+      "visible": true,
+      "options": false,
       "father": "module",
       "group": "scripts",
-      "linux": true,
+      "linux": false,
       "windows": true,
-      "mac": true,
-      "docker": false,
-      "visible": true,
-      "options": false
+      "mac": false,
+      "docker": false
     },
     {
-      "title": {
-        "en": "html example",
-        "es": "html de ejemplo"
+      "en": {
+        "title": "Execute a query",
+        "description": "Execute query",
+        "title_options": null,
+        "options": null
       },
-      "description": {
-        "en": "Culpa reprehenderit occaecat velit nisi minim ipsum nostrud consequat excepteur proident mollit. Pariatur cupidatat commodo eiusmod id ex nostrud veniam. Tempor fugiat eiusmod nostrud sit ullamco duis quis minim dolore esse sunt excepteur enim enim. Nulla laborum enim consectetur reprehenderit dolore aliquip esse eu elit et quis nisi nulla. Nulla proident dolor irure quis eiusmod minim consectetur.",
-        "es": "Culpa reprehenderit occaecat velit nisi minim ipsum nostrud consequat excepteur proident mollit. Pariatur cupidatat commodo eiusmod id ex nostrud veniam. Tempor fugiat eiusmod nostrud sit ullamco duis quis minim dolore esse sunt excepteur enim enim. Nulla laborum enim consectetur reprehenderit dolore aliquip esse eu elit et quis nisi nulla. Nulla proident dolor irure quis eiusmod minim consectetur."
+      "es": {
+        "title": "Ejecutar una query",
+        "description": "Ejecuta una query hacia la bd Firebird",
+        "title_options": null,
+        "options": null
       },
       "form": {
         "css": "modal-lg",
-        "style": "min-width:1024px;",
         "inputs": [
           {
-            "type": "html",
+            "type": "input",
+            "placeholder": "SELECT * from table",
             "title": {
-              "es": "HTML",
-              "en": "HTML"
+              "es": "Query:",
+              "en": "Query:"
             },
-            "src": "index.html",
-            "id": "html",
-            "css": "col-md-12",
-            "style": "height:300px;"
+            "description": {
+              "es": "Query que se desea ejecutar en la base de datos",
+              "en": "Query to execute in the database"
+            },
+            "id": "query",
+            "css": "col-md-12"
+          },
+          {
+            "type": "input",
+            "placeholder": "Conn1",
+            "title": {
+              "es": "Sesión:",
+              "en": "Session:"
+            },
+            "description": {
+              "es": "Nombre de la sesion previamente iniciada",
+              "en": "Name of the session previously started"
+            },
+            "id": "session",
+            "css": "col-md-6"
+          },
+          {
+            "type": "input",
+            "placeholder": "var",
+            "title": {
+              "es": "Asignar resultado a variable:",
+              "en": "Set result to var:"
+            },
+            "description": {
+              "es": "Variable donde se desea guardar el resultado.",
+              "en": "Varialbe where to store the result."
+            },
+            "help": {
+              "es": "Nombre de variable sin {}",
+              "en": "Variable name without {}"
+            },
+            "id": "result",
+            "css": "col-md-6"
           }
         ]
       },
-      "video_youtube": "aMV6cXPMMSo",
-      "icon": "data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1OCA1OCIgaGVpZ2h0PSI1MTJweCIgdmlld0JveD0iMCAwIDU4IDU4IiB3aWR0aD0iNTEycHgiPjxwYXRoIGQ9Im0zNyAxNi04IDR2OGw4IDQgOC00di04eiIgZmlsbD0iIzk2MjkxYSIvPjxwYXRoIGQ9Im0yMSAxNi04IDR2OGw4IDQgOC00di04eiIgZmlsbD0iI2M0OTMxOCIvPjxwYXRoIGQ9Im0yOSAyOC04IDR2OGw4IDQgOC00di04eiIgZmlsbD0iI2MxNjkxYSIvPjxnIGZpbGw9IiM2MWI4NzIiPjxwYXRoIGQ9Im01My42ODIgMjYuMDMyYy0uNDgyIDAtLjkwOC0uMzUxLS45ODYtLjg0My0uMzA0LTEuOS0uODM2LTMuNzYtMS41ODMtNS41MjYtLjIxNS0uNTA5LjAyMi0xLjA5Ni41MzEtMS4zMTEuNTEtLjIxNiAxLjA5Ni4wMjIgMS4zMTEuNTMxLjgxIDEuOTE1IDEuMzg4IDMuOTMxIDEuNzE2IDUuOTkxLjA4Ny41NDUtLjI4NCAxLjA1OC0uODMgMS4xNDUtLjA1My4wMDktLjEwNy4wMTMtLjE1OS4wMTN6Ii8+PHBhdGggZD0ibTQ4Ljc5NSAxNC43MzNjLS4yOTkgMC0uNTk1LS4xMzQtLjc5Mi0uMzg5LTEuMjU4LTEuNjI5LTIuNzIzLTMuMDk0LTQuMzU1LTQuMzU0LS40MzctLjMzNy0uNTE4LS45NjUtLjE4LTEuNDAycy45NjYtLjUxNyAxLjQwMy0uMThjMS43NjcgMS4zNjQgMy4zNTMgMi45NSA0LjcxNSA0LjcxNC4zMzcuNDM4LjI1NyAxLjA2NS0uMTggMS40MDItLjE4Mi4xNDEtLjM5Ny4yMDktLjYxMS4yMDl6Ii8+PHBhdGggZD0ibTM4LjcyNiA2Ljk2N2MtLjEzIDAtLjI2Mi0uMDI1LS4zODktLjA3OS0xLjc2Ni0uNzQ3LTMuNjI2LTEuMjgtNS41MjctMS41ODQtLjU0NS0uMDg3LS45MTctLjYtLjgzLTEuMTQ2LjA4Ny0uNTQ1LjYwMS0uOTE4IDEuMTQ1LS44MjkgMi4wNjEuMzI5IDQuMDc2LjkwNyA1Ljk5MSAxLjcxNy41MDkuMjE1Ljc0Ny44MDIuNTMxIDEuMzExLS4xNjEuMzgxLS41MzEuNjEtLjkyMS42MXoiLz48cGF0aCBkPSJtMzIuOTY3IDU0LjY4NGMtLjQ4MyAwLS45MDgtLjM1MS0uOTg2LS44NDItLjA4Ny0uNTQ2LjI4NC0xLjA1OS44My0xLjE0NiAxLjkwMS0uMzA0IDMuNzYxLS44MzcgNS41MjctMS41ODQuNTEtLjIxNCAxLjA5Ni4wMjEgMS4zMTEuNTMxLjIxNS41MDktLjAyMiAxLjA5Ni0uNTMxIDEuMzExLTEuOTE1LjgxLTMuOTMgMS4zODgtNS45OTEgMS43MTctLjA1NS4wMDktLjEwOC4wMTMtLjE2LjAxM3oiLz48cGF0aCBkPSJtNDQuMjY3IDQ5Ljc5NWMtLjI5OSAwLS41OTUtLjEzNC0uNzkyLS4zODktLjMzNy0uNDM4LS4yNTctMS4wNjUuMTgtMS40MDIgMS42My0xLjI1OSAzLjA5NS0yLjcyNSA0LjM1NC00LjM1Ni4zMzYtLjQzOC45NjQtLjUxNyAxLjQwMi0uMTgxLjQzOC4zMzguNTE4Ljk2Ni4xODEgMS40MDMtMS4zNjMgMS43NjctMi45NDkgMy4zNTQtNC43MTQgNC43MTYtLjE4Mi4xNDEtLjM5Ny4yMDktLjYxMS4yMDl6Ii8+PHBhdGggZD0ibTUyLjAzMyAzOS43MjdjLS4xMyAwLS4yNjItLjAyNS0uMzg5LS4wNzktLjUwOS0uMjE1LS43NDctLjgwMi0uNTMxLTEuMzExLjc0Ny0xLjc2NyAxLjI4LTMuNjI2IDEuNTgzLTUuNTI2LjA4Ni0uNTQ2LjYwMS0uOTE5IDEuMTQ1LS44My41NDUuMDg3LjkxNy42LjgzIDEuMTQ1LS4zMjkgMi4wNjEtLjkwNiA0LjA3Ni0xLjcxNiA1Ljk5MS0uMTYyLjM4MS0uNTMzLjYxLS45MjIuNjF6Ii8+PHBhdGggZD0ibTUuOTY3IDM5LjcyN2MtLjM5IDAtLjc2LS4yMjktLjkyMS0uNjEtLjgxLTEuOTE1LTEuMzg4LTMuOTMxLTEuNzE2LTUuOTkxLS4wODctLjU0NS4yODQtMS4wNTguODMtMS4xNDUuNTQtLjA4OSAxLjA1OS4yODQgMS4xNDUuODMuMzA0IDEuOS44MzYgMy43NiAxLjU4MyA1LjUyNi4yMTUuNTA5LS4wMjIgMS4wOTYtLjUzMSAxLjMxMS0uMTI4LjA1My0uMjYuMDc5LS4zOS4wNzl6Ii8+PHBhdGggZD0ibTEzLjc0IDQ5LjgwMWMtLjIxNCAwLS40MjktLjA2OC0uNjExLS4yMDktMS43NjctMS4zNjQtMy4zNTMtMi45NS00LjcxNS00LjcxNC0uMzM3LS40MzgtLjI1Ny0xLjA2NS4xOC0xLjQwMi40MzctLjMzOCAxLjA2NC0uMjU4IDEuNDAzLjE4IDEuMjU4IDEuNjI5IDIuNzIzIDMuMDk0IDQuMzU1IDQuMzU0LjQzNy4zMzcuNTE4Ljk2NS4xOCAxLjQwMi0uMTk3LjI1NS0uNDkzLjM4OS0uNzkyLjM4OXoiLz48cGF0aCBkPSJtMjUuMDMzIDU0LjY4NGMtLjA1MiAwLS4xMDUtLjAwNC0uMTU5LS4wMTMtMi4wNjEtLjMyOS00LjA3Ni0uOTA3LTUuOTkxLTEuNzE3LS41MDktLjIxNS0uNzQ3LS44MDItLjUzMS0xLjMxMS4yMTUtLjUxLjgwMS0uNzQ1IDEuMzExLS41MzEgMS43NjYuNzQ3IDMuNjI2IDEuMjggNS41MjcgMS41ODQuNTQ1LjA4Ny45MTcuNi44MyAxLjE0Ni0uMDc5LjQ5MS0uNTA0Ljg0Mi0uOTg3Ljg0MnoiLz48cGF0aCBkPSJtMTkuMjc0IDYuOTY3Yy0uMzkgMC0uNzYtLjIyOS0uOTIxLS42MS0uMjE1LS41MDkuMDIyLTEuMDk2LjUzMS0xLjMxMSAxLjkxNS0uODEgMy45My0xLjM4OCA1Ljk5MS0xLjcxNy41NDUtLjA4OSAxLjA1OC4yODUgMS4xNDUuODI5LjA4Ny41NDYtLjI4NCAxLjA1OS0uODMgMS4xNDYtMS45MDEuMzA0LTMuNzYxLjgzNy01LjUyNyAxLjU4NC0uMTI3LjA1My0uMjU5LjA3OS0uMzg5LjA3OXoiLz48cGF0aCBkPSJtOS4xOTkgMTQuNzQxYy0uMjEzIDAtLjQyOC0uMDY4LS42MS0uMjA4LS40MzgtLjMzOC0uNTE4LS45NjYtLjE4MS0xLjQwMyAxLjM2My0xLjc2NyAyLjk0OS0zLjM1NCA0LjcxNC00LjcxNi40MzctLjMzNyAxLjA2NC0uMjU4IDEuNDAzLjE4LjMzNy40MzguMjU3IDEuMDY1LS4xOCAxLjQwMi0xLjYzIDEuMjU5LTMuMDk1IDIuNzI1LTQuMzU0IDQuMzU2LS4xOTcuMjU1LS40OTIuMzg5LS43OTIuMzg5eiIvPjxwYXRoIGQ9Im00LjMxOCAyNi4wMzJjLS4wNTMgMC0uMTA1LS4wMDQtLjE1OS0uMDEzLS41NDUtLjA4Ny0uOTE3LS42LS44My0xLjE0NS4zMjktMi4wNjEuOTA2LTQuMDc2IDEuNzE2LTUuOTkxLjIxNS0uNTA5LjgwMS0uNzQ3IDEuMzExLS41MzEuNTA5LjIxNS43NDcuODAyLjUzMSAxLjMxMS0uNzQ3IDEuNzY3LTEuMjggMy42MjYtMS41ODMgNS41MjYtLjA3OC40OTMtLjUwMy44NDMtLjk4Ni44NDN6Ii8+PC9nPjxjaXJjbGUgY3g9IjQiIGN5PSIyOSIgZmlsbD0iI2RkMzUyZSIgcj0iNCIvPjxjaXJjbGUgY3g9IjU0IiBjeT0iMjkiIGZpbGw9IiNkZDM1MmUiIHI9IjQiLz48Y2lyY2xlIGN4PSIyOSIgY3k9IjU0IiBmaWxsPSIjZGQzNTJlIiByPSI0Ii8+PGNpcmNsZSBjeD0iMjkiIGN5PSI0IiBmaWxsPSIjZGQzNTJlIiByPSI0Ii8+PHBhdGggZD0ibTIxIDMyLTgtNHYtOGw4IDR6IiBmaWxsPSIjZDhhNTE2Ii8+PHBhdGggZD0ibTIxIDMyIDgtNHYtOGwtOCA0eiIgZmlsbD0iI2ViYmExNiIvPjxwYXRoIGQ9Im0yMSAyNC04LTQgOC00IDggNHoiIGZpbGw9IiNjNDkzMTgiLz48cGF0aCBkPSJtMzcgMzItOC00di04bDggNHoiIGZpbGw9IiNjNTQxMWUiLz48cGF0aCBkPSJtMzcgMzIgOC00di04bC04IDR6IiBmaWxsPSIjYWYzMzFiIi8+PHBhdGggZD0ibTM3IDI0LTgtNCA4LTQgOCA0eiIgZmlsbD0iIzk2MjkxYSIvPjxwYXRoIGQ9Im0yOSA0NC04LTR2LThsOCA0eiIgZmlsbD0iI2VkOGExOSIvPjxwYXRoIGQ9Im0yOSA0NCA4LTR2LThsLTggNHoiIGZpbGw9IiNkMzc2MWEiLz48cGF0aCBkPSJtMjkgMzYtOC00IDgtNCA4IDR6IiBmaWxsPSIjYzE2OTFhIi8+PC9zdmc+Cg==",
-      "module": "example_html",
-      "module_name": "example",
+      "video_youtube": "",
+      "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAT2SURBVHjaYvz//z8DEeD/30dAxMiqB2L/vgQkmdhsiNEIEEAs+KX/ftvy9/sWBkYGJg5bZg5fRkY+kCizHFDw55t0JmY5Zk5fZp4YRiY+XCYABBDDfxzg94cl3+5p/XyZ/u/3Q1xq/n47/OOx57fb0r/etP37+xGrGoAAwmLBvz8ff9z1/HZD6++Xw/+JAH8+bfl2TRqk/jMW9QABhG7B36+Xvp2R+n7FEmjNf6IBUPH3q5ZfT3P/fr0ETQoggFAs+Pv50rdjUj+uRfwnC/y4HvH1MPfvFyh2AAQQwoJ/vz9+O6L1/aQVkEGeBUCNQO1f9/L8ebUFLggQQAgLfpyO+LZT+t83LFH682r51608P85E/Hm+Bb8df98eBqr8tksa7kqAAGKCpKV/r4/8fbiZRTaLkVMOPZn9/vT/7UVGZjmGbx9+Hg//vkX654nIP3emAbX8OpuBpphJyIZZyOf/lw+/L5ZBRAACiBGS0X7u9vz34RJHwHVGVkSK/vtky6+T6f9/f8RM3Ky6Vf+/PmLklmPVrkLPOk+3/DwcAWRw+l4DKgAIIJAP/r27/PfREWa5WGTT/3959HNP5P/Pnxh+MGKiv3e2sqhkY5oO8oSYHUTN76vTgFyAAAJZ8OfaUoafDCyyPigK2QQY//MDxYEks4gthA1H/15c+rHa6u/9rZgWgFwJVvP39mYgFyCAwD64f4jhx39GET0UdWx87L7bWZSjOaKvsftsA5JMfHoMPxiQ0a+d6diLB7Ds/zeP/r2+DBBAoLLo3+NLEBPRPSuiy+YyA24fk5jNv0cXUeL/xwccFkAL0P8fHgIEEMu/F5cZfjISKEp/fPpzcuqfo8AwRVHJyMGPRfHHR3AD/z27DBBALAzfPjL8xFli///w6Peetj/nl2KVZdbxwVIA3z0MigMohwEggFgY/oGDDGjb08tM0rrISv+cXvprZTq+st4yG1Pw363DCBf/+Q8QQCwMQG9CLLh5GNmCv5e2/FqE13THbCZJXXQfv3v05+gSJO8wAAQQE5OMLjRVndqMrPTXsnK0NIOMmBVs2YI6MW39tRxFF6OAPEAAgZIpkzgo/f29ePj/60dQb9448v/pQzwWsMXPxGL6rIy/JzYjK2OS1gMIILAFaragUPv5//eKVlhA/oeI4ESoyeLftcM/Gzz+7FmMrIaRhY9JThcggFjAoRnze+0UIOP3jiXMDjHMurYg/b/wJdwfVR6svqAY/vfq0b8rh/49uIQljdn4AkmAAIIWdt9itP6/eAjii8tzzjrx797FH2UeDJQBjq4dQLcCBBC0uGbP6ILm74cPf00oZRKTRy55yEDMmragkGBgAAggFph3fID8v2cOg9LuhiVMynqMgvL/nz8k2/lsWd0QBkAAMcGF2LtXgQpCYDHy4//f44eY9WwZfv0nD7HldTGpQLMIQAAxIrfs/t24/CPG/f8nUA3DsXTHj0RyooElIIa9BZGIAQKICaX41NDlWLyTkQ2Ut/9u28Js50tq0LP4oJgOBAABxIjZNv3/5NHP3LS/Rw9zLFr5a0Lrv6uXiA33xi7WJPTSCSCAcDcdly3+Zm3+5/Ch7/HhX0S58KPvAe7/HmNvYQIEEAOBZuGmzSBy62agZV94OdHQV22NnxWlfy9fwmMCQAAxEtl8BwXdo0d/Dx36/wCUdpns7Zjk5Rnl5AjqAggwAB4FwGj3ntBVAAAAAElFTkSuQmCC",
+      "module": "execute",
+      "module_name": "Firebird",
+      "visible": true,
+      "options": false,
       "father": "module",
       "group": "scripts",
-      "linux": true,
+      "linux": false,
       "windows": true,
-      "mac": true,
-      "docker": false,
+      "mac": false,
+      "docker": false
+    },
+    {
+      "en": {
+        "title": "Close connection",
+        "description": "Close oracle connection for session",
+        "title_options": null,
+        "options": null
+      },
+      "es": {
+        "title": "Cerrar conexión",
+        "description": "Cierra una conexión de oracle por sesión",
+        "title_options": null,
+        "options": null
+      },
+      "form": {
+        "css": "modal-md",
+        "inputs": [
+          {
+            "type": "input",
+            "placeholder": "Conn1",
+            "title": {
+              "es": "Sesión:",
+              "en": "Session:"
+            },
+            "description": {
+              "es": "Nombre de la sesion previamente iniciada que se desea cerrar",
+              "en": "Name of the session previously started that you want to close"
+            },
+            "id": "session",
+            "css": "col-md-12"
+          }
+        ]
+      },
+      "video_youtube": "",
+      "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAT2SURBVHjaYvz//z8DEeD/30dAxMiqB2L/vgQkmdhsiNEIEEAs+KX/ftvy9/sWBkYGJg5bZg5fRkY+kCizHFDw55t0JmY5Zk5fZp4YRiY+XCYABBDDfxzg94cl3+5p/XyZ/u/3Q1xq/n47/OOx57fb0r/etP37+xGrGoAAwmLBvz8ff9z1/HZD6++Xw/+JAH8+bfl2TRqk/jMW9QABhG7B36+Xvp2R+n7FEmjNf6IBUPH3q5ZfT3P/fr0ETQoggFAs+Pv50rdjUj+uRfwnC/y4HvH1MPfvFyh2AAQQwoJ/vz9+O6L1/aQVkEGeBUCNQO1f9/L8ebUFLggQQAgLfpyO+LZT+t83LFH682r51608P85E/Hm+Bb8df98eBqr8tksa7kqAAGKCpKV/r4/8fbiZRTaLkVMOPZn9/vT/7UVGZjmGbx9+Hg//vkX654nIP3emAbX8OpuBpphJyIZZyOf/lw+/L5ZBRAACiBGS0X7u9vz34RJHwHVGVkSK/vtky6+T6f9/f8RM3Ky6Vf+/PmLklmPVrkLPOk+3/DwcAWRw+l4DKgAIIJAP/r27/PfREWa5WGTT/3959HNP5P/Pnxh+MGKiv3e2sqhkY5oO8oSYHUTN76vTgFyAAAJZ8OfaUoafDCyyPigK2QQY//MDxYEks4gthA1H/15c+rHa6u/9rZgWgFwJVvP39mYgFyCAwD64f4jhx39GET0UdWx87L7bWZSjOaKvsftsA5JMfHoMPxiQ0a+d6diLB7Ds/zeP/r2+DBBAoLLo3+NLEBPRPSuiy+YyA24fk5jNv0cXUeL/xwccFkAL0P8fHgIEEMu/F5cZfjISKEp/fPpzcuqfo8AwRVHJyMGPRfHHR3AD/z27DBBALAzfPjL8xFli///w6Peetj/nl2KVZdbxwVIA3z0MigMohwEggFgY/oGDDGjb08tM0rrISv+cXvprZTq+st4yG1Pw363DCBf/+Q8QQCwMQG9CLLh5GNmCv5e2/FqE13THbCZJXXQfv3v05+gSJO8wAAQQE5OMLjRVndqMrPTXsnK0NIOMmBVs2YI6MW39tRxFF6OAPEAAgZIpkzgo/f29ePj/60dQb9448v/pQzwWsMXPxGL6rIy/JzYjK2OS1gMIILAFaragUPv5//eKVlhA/oeI4ESoyeLftcM/Gzz+7FmMrIaRhY9JThcggFjAoRnze+0UIOP3jiXMDjHMurYg/b/wJdwfVR6svqAY/vfq0b8rh/49uIQljdn4AkmAAIIWdt9itP6/eAjii8tzzjrx797FH2UeDJQBjq4dQLcCBBC0uGbP6ILm74cPf00oZRKTRy55yEDMmragkGBgAAggFph3fID8v2cOg9LuhiVMynqMgvL/nz8k2/lsWd0QBkAAMcGF2LtXgQpCYDHy4//f44eY9WwZfv0nD7HldTGpQLMIQAAxIrfs/t24/CPG/f8nUA3DsXTHj0RyooElIIa9BZGIAQKICaX41NDlWLyTkQ2Ut/9u28Js50tq0LP4oJgOBAABxIjZNv3/5NHP3LS/Rw9zLFr5a0Lrv6uXiA33xi7WJPTSCSCAcDcdly3+Zm3+5/Ch7/HhX0S58KPvAe7/HmNvYQIEEAOBZuGmzSBy62agZV94OdHQV22NnxWlfy9fwmMCQAAxEtl8BwXdo0d/Dx36/wCUdpns7Zjk5Rnl5AjqAggwAB4FwGj3ntBVAAAAAElFTkSuQmCC",
+      "module": "close",
+      "module_name": "Firebird",
       "visible": true,
-      "options": false
+      "options": false,
+      "father": "module",
+      "group": "scripts",
+      "linux": false,
+      "windows": true,
+      "mac": false,
+      "docker": false
     }
   ]
 }
