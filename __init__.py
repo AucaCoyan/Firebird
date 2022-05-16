@@ -24,8 +24,13 @@ Para instalar librerias se debe ingresar por terminal a la carpeta "libs"
 
 """
 
+GetParams = GetParams #type: ignore
+SetVar = SetVar #type: ignore
+PrintException = PrintException #type: ignore
+tmp_global_obj = tmp_global_obj #type: ignore
 
 import os, sys
+
 
 base_path = tmp_global_obj["basepath"]
 cur_path = base_path + "modules" + os.sep + "Firebird" + os.sep + "libs"
@@ -33,9 +38,16 @@ cur_path = base_path + "modules" + os.sep + "Firebird" + os.sep + "libs"
 if cur_path not in sys.path:
     sys.path.append(cur_path)
 
-import fdb   
+# fbclient.dll path
+dll_folder = os.path.join(cur_path)
+dll_full_path = os.path.join(dll_folder, 'fbclient.dll')
+
+
 import re
 import datetime
+
+# import rocketbot implementation of fdb
+import rocketbotfirebird as rbfb #type: ignore
 
 
 # Globals declared here
@@ -46,115 +58,103 @@ SESSION_DEFAULT = "default"
 
 # Initialize settings for the module here
 try:
-    if mod_firebird_sessions is None:
+    if mod_firebird_sessions is None: #type: ignore
         mod_firebird_sessions = {SESSION_DEFAULT: {}}
 except NameError:
     mod_firebird_sessions = {SESSION_DEFAULT: {}}
 
 
-
-
-
 # capture the name of the running command
 module = GetParams("module")
 
-GetParams = GetParams #type: ignore
-
-session = GetParams("session")
-if not session:
-    session = SESSION_DEFAULT
-
 if module == "connect":
-    """
+    session = GetParams("session")
+    dsn = GetParams("dsn")
     user = GetParams("user")
     password = GetParams("password")
-    dsnHostname = GetParams("dsnHostname")
-    dsnPort = GetParams("dsnPort")
-    dsnSID = GetParams("dsnSID")
-    
     result = GetParams("result")
-    oracle_client_path = GetParams("oracle_client_path")
-    dsn = ""
-    data = GetParams("identifier")
-    option = GetParams("option")
+
+    print(f"""
+    session: {session}
+    dsn:  {dsn}
+    user:  {user}
+    password {password}
+    result: {result}
+    """)
+    # capture the running session (if any)
+    if not session: #type: ignore
+        session = SESSION_DEFAULT
+
+    debug = True
+
+    if debug == True:
+        # Testing parameters
+        # user = "SYSDBA"
+        # password = "masterkey"
+        # file = r"C:/firebirdDatabase/TEST.FDB"
+        directorio_libreria = os.path.join("C:", "\\Program Files (x86)", "Firebird", "Firebird_3_0")
+        ruta = os.path.join(directorio_libreria, "fbclient.dll")
+
+        # Test por si no anda connect, cursor y query por separado
+        salida = rbfb.connect_and_point(user=user, password=password, database=dsn, library_path=ruta)
+        print(salida)
+
+        # exit the command
+        exit()
+
+    try:
+        # load the connection and the cursor 
+        connection = rbfb.connect_fdb(user=user, password=password, database=dsn, library_path=dll_full_path)
+        cursor = rbfb.cursor_fdb(connection)
+
+        # save the connection and the cursor on the session dictionary 
+        mod_firebird_sessions[session] = {
+            "connection": connection,
+            "cursor": cursor
+        }
+
+        # Después de que funcione excecute, borrar esta linea y dejar result, True
+        # SetVar(result, fdb_response)
+        SetVar(result, True)
+    except Exception as e:
+        PrintException()
+        raise e
+    
+    """
+    finally:
+        rbfb.close_conn_fdb(connection)
+        pass
     """
 
-    api_path = os.path.join(cur_path, 'fbclient.dll')
-
-    # print('el archivo path es un file?', os.path.isfile(api_path))
-
-    # fdb.load_api(api_path)
-
-    # print('importo bien')
-
-
-
-
-
-
-
-
-
-    try:
-
-
-
-
-        user = "SYSDBA"
-        password = "masterkey"
-        file = r"C:/firebirdDatabase/TEST.FDB"
-        directorio_libreria = os.path.join('C:', '\Program Files (x86)', 'Firebird', 'Firebird_3_0')
-        ruta = os.path.join(directorio_libreria, 'fbclient.dll')
-
-        from rocketbotfirebird import connect_fdb #type: ignore
-        print(connect_fdb(user=user, password=password, file=file,library_path=ruta) )
-        exit()
-
-        print(ruta)
-        print('el archivo existe?', os.path.isfile(ruta))
-
-        try:
-            print(dir(fdb.load_api(ruta)))
-
-        except Exception as e:
-            PrintException()
-            raise e
-
-        connection = fdb.connect(
-            database=file, user=user, password=password,
-        )
-
-        cursor = connection.cursor()
-
-        cursor.execute("SELECT * FROM RDB$RELATIONS")
-
-        exit()
-
-
-        connection = fdb.connect(database=dsnHostname, user=user, password=password)
-        print('esto no debe aparecer')
-        mod_firebird_sessions[session] = connection
-
-    except Exception as e:
-        PrintException()  # 
-        raise e
-
 if module == "execute":
-    query = GetParams("query")  # 
-    result = GetParams("result")  # 
-    connection = mod_firebird_sessions[session]
-    cursor = connection.cursor()
+    """
+    Para las queries, si son de escribir en la base de datos tenés que mandarle
+    connection.commit()
+    sino no te las escribe
+    """
+    # Take the vars from frontend
+    session = GetParams("session")
+    print('la sesion es:', session)
+    query = GetParams("query")
+    result = GetParams("result")
+
+
+    if not session: #type: ignore
+        session = SESSION_DEFAULT
+
+    # Recover the connection and cursor
+    connection = mod_firebird_sessions[session]['connection']
+    cursor = mod_firebird_sessions[session]['cursor']
 
     try:
-        cursor.execute(query)
-        print(cursor.fetchall())
-
-        if query.lower().startswith(("insert", "update", "delete", "alter")):
-            con.commit()
+        if query.lower().startswith(("create", "insert", "update", "delete", "alter")):
+            connection.commit()
             if result:
-                SetVar(result, True)  # 
+                SetVar(result, True)
 
         else:
+            # Esto no sé para qué sirve
+            """
             data = [r for r in cursor]
             regex = r"datetime.datetime\(\d\d\d\d,\s?\d\d,\s?\d\d?,\s?\d\d?,\s?\d\d?,?\s?\d?\d?\)"
             regex2 = r"datetime.datetime\(\d\d\d\d,\s?\d,\s?\d\d?,\s?\d\d?,\s?\d\d?,?\s?\d?\d?\)"
@@ -171,26 +171,36 @@ if module == "execute":
                     match.group(),
                     '"{}"'.format(eval(match.group()).strftime("%d/%m/%Y")),
                 )
+            try:
+                data = eval(data_str)
+                mod_firebird_sessions[session][result] = data
+            except:
+                mod_firebird_sessions[session][result] = data_str
+            SetVar(result, data_str)
+            """
 
-            if result:
-                try:
-                    data = eval(data_str)
-                    mod_firebird_sessions[session][result] = data  # 
-                except:
-                    mod_firebird_sessions[session][result] = data_str
-                SetVar(result, data_str)  # 
+            fdb_response = rbfb.execute_fdb(query, cursor)
+            print('la respuesta es: ', fdb_response)
+            SetVar(result, fdb_response)
+
     except Exception as e:
-        PrintException()  # 
+        PrintException()
         raise e
 
+
 if module == "close":
-    session = GetParams("session")  # 
-    cursor = mod_firebird_sessions[session]["cursor"]
-    con = mod_firebird_sessions[session]["connection"]
+    session = GetParams("session")
+
+    if not session: #type: ignore
+        session = SESSION_DEFAULT
+
+    # Recover the connection and cursor
+    connection = mod_firebird_sessions[session]['connection']
+    cursor = mod_firebird_sessions[session]['cursor']
 
     try:
-        cursor.close()
-        con.close()
+        # cursor.close() # esto creo que no hace falta
+        connection.close()
     except Exception as e:
-        PrintException()  # 
+        PrintException()
         raise e

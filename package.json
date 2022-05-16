@@ -43,15 +43,29 @@
               "en": "Session:"
             },
             "description": {
-              "es": "Nombre que se desea poner a la sesión",
+              "es": "Nombre que se desea poner a la sesion",
               "en": "Name for identify the session"
             },
             "id": "session",
-            "css": "col-md-6"
+            "css": "col-md-12"
           },
           {
             "type": "input",
-            "placeholder": "sys",
+            "placeholder": "host:/path/database.fdb",
+            "title": {
+              "es": "DSN Hostname de Conexion:",
+              "en": "DSN Hostname:"
+            },
+            "description": {
+              "es": "Hostname asignado en el DSN",
+              "en": "Hostname from the DSN"
+            },
+            "id": "dsn",
+            "css": "col-md-12"
+          },
+          {
+            "type": "input",
+            "placeholder": "SYSDBA",
             "title": {
               "es": "Usuario:",
               "en": "User:"
@@ -61,11 +75,11 @@
               "en": "Name of the user to connect to the data base"
             },
             "id": "user",
-            "css": "col-md-6"
+            "css": "col-md-5"
           },
           {
             "type": "input",
-            "placeholder": "password",
+            "placeholder": "masterkey",
             "title": {
               "es": "Contraseña:",
               "en": "Password:"
@@ -75,49 +89,7 @@
               "en": "Password from the user previously used"
             },
             "id": "password",
-            "css": "col-md-4"
-          },
-          {
-            "type": "input",
-            "placeholder": "Firebird.host.com/ORCL",
-            "title": {
-              "es": "DSN Hostname de Conexion:",
-              "en": "DSN Hostname:"
-            },
-            "description": {
-              "es": "Hostname asignado en el DSN",
-              "en": "Hostname from the DSN"
-            },
-            "id": "dsnHostname",
-            "css": "col-md-4"
-          },
-          {
-            "type": "input",
-            "placeholder": "1521",
-            "title": {
-              "es": "DSN Puerto de Conexion:",
-              "en": "DSN Port:"
-            },
-            "description": {
-              "es": "Puerto asignado en el DSN",
-              "en": "Port from the DSN"
-            },
-            "id": "dsnPort",
-            "css": "col-md-4"
-          },
-          {
-            "type": "input",
-            "placeholder": "pdborcl / pdborcl.example.com",
-            "title": {
-              "es": "DSN SID / Service name de Conexion:",
-              "en": "DSN SID / Service name:"
-            },
-            "description": {
-              "es": "SID o nombre de servicio asignado en el DSN",
-              "en": "SID or service name from the DSN"
-            },
-            "id": "dsnSID",
-            "css": "col-md-4"
+            "css": "col-md-5"
           },
           {
             "type": "input",
@@ -130,12 +102,9 @@
               "es": "Variable donde se desea guardar el resultado.",
               "en": "Varialbe where to store the result."
             },
-            "help": {
-              "es": "Nombre de variable sin {}",
-              "en": "Variable name without {}"
-            },
             "id": "result",
-            "css": "col-md-4"
+            "remove_vars": true,
+            "css": "col-md-5"
           }
         ]
       },
@@ -170,6 +139,20 @@
         "inputs": [
           {
             "type": "input",
+            "placeholder": "Conn1",
+            "title": {
+              "es": "Sesión:",
+              "en": "Session:"
+            },
+            "description": {
+              "es": "Nombre de la sesión a ejecutar el query",
+              "en": "Name of the session to execute the query"
+            },
+            "id": "session",
+            "css": "col-md-12"
+          },
+          {
+            "type": "input",
             "placeholder": "SELECT * from table",
             "title": {
               "es": "Query:",
@@ -181,20 +164,6 @@
             },
             "id": "query",
             "css": "col-md-12"
-          },
-          {
-            "type": "input",
-            "placeholder": "Conn1",
-            "title": {
-              "es": "Sesión:",
-              "en": "Session:"
-            },
-            "description": {
-              "es": "Nombre de la sesion previamente iniciada",
-              "en": "Name of the session previously started"
-            },
-            "id": "session",
-            "css": "col-md-6"
           },
           {
             "type": "input",
@@ -212,7 +181,7 @@
               "en": "Variable name without {}"
             },
             "id": "result",
-            "css": "col-md-6"
+            "css": "col-md-12"
           }
         ]
       },
@@ -253,10 +222,19 @@
               "en": "Session:"
             },
             "description": {
-              "es": "Nombre de la sesion previamente iniciada que se desea cerrar",
-              "en": "Name of the session previously started that you want to close"
+              "es": "Nombre de la sesión que se desea cerrar",
+              "en": "Name of the session to close"
             },
             "id": "session",
+            "css": "col-md-12"
+          },
+          {
+            "type": "label",
+            "title": {
+              "es": "Cerrará la conexión nombrada",
+              "en": "The named connection will be shut down"
+            },
+            "id": "label",
             "css": "col-md-12"
           }
         ]
