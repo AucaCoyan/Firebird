@@ -37,20 +37,6 @@
         "inputs": [
           {
             "type": "input",
-            "placeholder": "Conn1",
-            "title": {
-              "es": "Sesión:",
-              "en": "Session:"
-            },
-            "description": {
-              "es": "Nombre que se desea poner a la sesion",
-              "en": "Name for identify the session"
-            },
-            "id": "session",
-            "css": "col-md-12"
-          },
-          {
-            "type": "input",
             "placeholder": "host:/path/database.fdb",
             "title": {
               "es": "DSN Hostname de Conexion:",
@@ -139,20 +125,6 @@
         "inputs": [
           {
             "type": "input",
-            "placeholder": "Conn1",
-            "title": {
-              "es": "Sesión:",
-              "en": "Session:"
-            },
-            "description": {
-              "es": "Nombre de la sesión a ejecutar el query",
-              "en": "Name of the session to execute the query"
-            },
-            "id": "session",
-            "css": "col-md-12"
-          },
-          {
-            "type": "input",
             "placeholder": "SELECT * from table",
             "title": {
               "es": "Query:",
@@ -181,6 +153,7 @@
               "en": "Variable name without {}"
             },
             "id": "result",
+            "remove_vars": true,
             "css": "col-md-12"
           }
         ]
@@ -215,27 +188,13 @@
         "css": "modal-md",
         "inputs": [
           {
-            "type": "input",
-            "placeholder": "Conn1",
-            "title": {
-              "es": "Sesión:",
-              "en": "Session:"
-            },
-            "description": {
-              "es": "Nombre de la sesión que se desea cerrar",
-              "en": "Name of the session to close"
-            },
-            "id": "session",
-            "css": "col-md-12"
-          },
-          {
             "type": "label",
             "title": {
               "es": "Cerrará la conexión nombrada",
               "en": "The named connection will be shut down"
             },
             "id": "label",
-            "css": "col-md-12"
+            "css": "col-md-10"
           }
         ]
       },

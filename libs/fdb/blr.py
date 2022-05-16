@@ -1,4 +1,4 @@
-#coding:utf-8
+# coding:utf-8
 #
 #   PROGRAM/MODULE: fdb
 #   FILE:           blr.py
@@ -23,31 +23,31 @@
 
 # BLR data types are defined in fdb.ibase
 
-#blr_text = 14
-#blr_text2 = 15
-#blr_short = 7
-#blr_long = 8
-#blr_quad = 9
-#blr_float = 10
-#blr_double = 27
-#blr_d_float = 11
-#blr_timestamp = 35
-#blr_varying = 37
-#blr_varying2 = 38
-#blr_blob = 261
-#blr_cstring = 40
-#blr_cstring2 = 41
-#blr_blob_id = 45
-#blr_sql_date = 12
-#blr_sql_time = 13
-#blr_int64 = 16
-#blr_blob2 = 17
-#blr_domain_name = 18
-#blr_domain_name2 = 19
-#blr_not_nullable = 20
-#blr_column_name = 21
-#blr_column_name2 = 22
-#blr_bool = 23 # Firebird 3.0
+# blr_text = 14
+# blr_text2 = 15
+# blr_short = 7
+# blr_long = 8
+# blr_quad = 9
+# blr_float = 10
+# blr_double = 27
+# blr_d_float = 11
+# blr_timestamp = 35
+# blr_varying = 37
+# blr_varying2 = 38
+# blr_blob = 261
+# blr_cstring = 40
+# blr_cstring2 = 41
+# blr_blob_id = 45
+# blr_sql_date = 12
+# blr_sql_time = 13
+# blr_int64 = 16
+# blr_blob2 = 17
+# blr_domain_name = 18
+# blr_domain_name2 = 19
+# blr_not_nullable = 20
+# blr_column_name = 21
+# blr_column_name2 = 22
+# blr_bool = 23 # Firebird 3.0
 
 # first sub parameter for blr_domain_name[2]
 blr_domain_type_of = 0
@@ -164,10 +164,10 @@ blr_agg_total = 86
 blr_agg_average = 87
 blr_parameter3 = 88
 # Unsupported
-#blr_run_max = 89
-#blr_run_min = 90
-#blr_run_total = 91
-#blr_run_average = 92
+# blr_run_max = 89
+# blr_run_min = 90
+# blr_run_total = 91
+# blr_run_average = 92
 blr_agg_count2 = 93
 blr_agg_count_distinct = 94
 blr_agg_total_distinct = 95
@@ -182,8 +182,8 @@ blr_value_if = 105
 blr_matching2 = 106
 blr_index = 107
 blr_ansi_like = 108
-blr_scrollable = 109 # Firebird 3.0
-#blr_seek = 112 # Defined in FB < 3.0
+blr_scrollable = 109  # Firebird 3.0
+# blr_seek = 112 # Defined in FB < 3.0
 # unused codes 110..117
 
 blr_run_count = 118
@@ -204,7 +204,7 @@ blr_procedure2 = 133
 #
 blr_start_savepoint = 134
 blr_end_savepoint = 135
-#unused codes 136..138
+# unused codes 136..138
 
 # Access plan items
 blr_plan = 139
@@ -308,7 +308,7 @@ blr_savepoint_release_single = 3
 blr_cursor_open = 0
 blr_cursor_close = 1
 blr_cursor_fetch = 2
-blr_cursor_fetch_scroll = 3 # Firebird 3.0
+blr_cursor_fetch_scroll = 3  # Firebird 3.0
 
 # Scroll options (FB 3.0)
 blr_croll_forward = 0
@@ -331,19 +331,19 @@ blr_similar = 188
 blr_exec_stmt = 189
 
 # subcodes of blr_exec_stmt
-blr_exec_stmt_inputs = 1	# input parameters count
-blr_exec_stmt_outputs = 2	# output parameters count
+blr_exec_stmt_inputs = 1  # input parameters count
+blr_exec_stmt_outputs = 2  # output parameters count
 blr_exec_stmt_sql = 3
 blr_exec_stmt_proc_block = 4
 blr_exec_stmt_data_src = 5
 blr_exec_stmt_user = 6
 blr_exec_stmt_pwd = 7
-blr_exec_stmt_tran = 8	# not implemented yet
-blr_exec_stmt_tran_clone = 9	# make transaction parameters equal to current transaction
+blr_exec_stmt_tran = 8  # not implemented yet
+blr_exec_stmt_tran_clone = 9  # make transaction parameters equal to current transaction
 blr_exec_stmt_privs = 10
-blr_exec_stmt_in_params = 11	# not named input parameters
-blr_exec_stmt_in_params2 = 12	# named input parameters
-blr_exec_stmt_out_params = 13	# output parameters
+blr_exec_stmt_in_params = 11  # not named input parameters
+blr_exec_stmt_in_params2 = 12  # named input parameters
+blr_exec_stmt_out_params = 13  # output parameters
 blr_exec_stmt_role = 14
 
 blr_stmt_expr = 190
@@ -369,4 +369,4 @@ blr_subproc = 206
 blr_subfunc_decl = 207
 blr_subfunc = 208
 blr_record_version2 = 209
-blr_gen_id2 = 210 # NEXT VALUE FOR generator
+blr_gen_id2 = 210  # NEXT VALUE FOR generator
