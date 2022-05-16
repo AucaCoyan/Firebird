@@ -1,3 +1,13 @@
+<div align="center">
+
+# Caution! Work in progress
+
+<img src="https://cdn11.bigcommerce.com/s-frpbc5/images/stencil/2000x2000/products/1477/2368/EU20456_450x300_POLY__65377.1501221193.jpg?c=2" alt="drawing" width="200"/>
+
+    Please remove this flag when is ready to send to QA.
+
+</div>
+
 # Firebird
 
 This module connects to the Firebird. You can ...
