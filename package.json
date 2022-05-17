@@ -1,224 +1,215 @@
 {
   "author": "Auca Maillot",
-  "description": "Acá una description en español | and here a description in English",
+  "description": "A Firebird module to connect Rocketbot with Firebird",
   "disclaimer": "THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "license": "MIT",
   "homepage": "http://rocketbot.co/",
+  "name": "Firebird",
   "linux": false,
   "windows": true,
   "mac": false,
   "docker": false,
   "dependencies": {
-    "google-api-python-client": "*",
-    "google-auth-httplib2": "*",
-    "google-auth-oauthlib": "*"
+    "fdb": "*"
   },
-  "name": "example",
   "title": {
-    "en": "Example Module",
-    "es": "Modulo de Ejemplo"
+    "en": "Firebird",
+    "es": "Firebird"
   },
-  "icon": "data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1OCA1OCIgaGVpZ2h0PSI1MTJweCIgdmlld0JveD0iMCAwIDU4IDU4IiB3aWR0aD0iNTEycHgiPjxwYXRoIGQ9Im0zNyAxNi04IDR2OGw4IDQgOC00di04eiIgZmlsbD0iIzk2MjkxYSIvPjxwYXRoIGQ9Im0yMSAxNi04IDR2OGw4IDQgOC00di04eiIgZmlsbD0iI2M0OTMxOCIvPjxwYXRoIGQ9Im0yOSAyOC04IDR2OGw4IDQgOC00di04eiIgZmlsbD0iI2MxNjkxYSIvPjxnIGZpbGw9IiM2MWI4NzIiPjxwYXRoIGQ9Im01My42ODIgMjYuMDMyYy0uNDgyIDAtLjkwOC0uMzUxLS45ODYtLjg0My0uMzA0LTEuOS0uODM2LTMuNzYtMS41ODMtNS41MjYtLjIxNS0uNTA5LjAyMi0xLjA5Ni41MzEtMS4zMTEuNTEtLjIxNiAxLjA5Ni4wMjIgMS4zMTEuNTMxLjgxIDEuOTE1IDEuMzg4IDMuOTMxIDEuNzE2IDUuOTkxLjA4Ny41NDUtLjI4NCAxLjA1OC0uODMgMS4xNDUtLjA1My4wMDktLjEwNy4wMTMtLjE1OS4wMTN6Ii8+PHBhdGggZD0ibTQ4Ljc5NSAxNC43MzNjLS4yOTkgMC0uNTk1LS4xMzQtLjc5Mi0uMzg5LTEuMjU4LTEuNjI5LTIuNzIzLTMuMDk0LTQuMzU1LTQuMzU0LS40MzctLjMzNy0uNTE4LS45NjUtLjE4LTEuNDAycy45NjYtLjUxNyAxLjQwMy0uMThjMS43NjcgMS4zNjQgMy4zNTMgMi45NSA0LjcxNSA0LjcxNC4zMzcuNDM4LjI1NyAxLjA2NS0uMTggMS40MDItLjE4Mi4xNDEtLjM5Ny4yMDktLjYxMS4yMDl6Ii8+PHBhdGggZD0ibTM4LjcyNiA2Ljk2N2MtLjEzIDAtLjI2Mi0uMDI1LS4zODktLjA3OS0xLjc2Ni0uNzQ3LTMuNjI2LTEuMjgtNS41MjctMS41ODQtLjU0NS0uMDg3LS45MTctLjYtLjgzLTEuMTQ2LjA4Ny0uNTQ1LjYwMS0uOTE4IDEuMTQ1LS44MjkgMi4wNjEuMzI5IDQuMDc2LjkwNyA1Ljk5MSAxLjcxNy41MDkuMjE1Ljc0Ny44MDIuNTMxIDEuMzExLS4xNjEuMzgxLS41MzEuNjEtLjkyMS42MXoiLz48cGF0aCBkPSJtMzIuOTY3IDU0LjY4NGMtLjQ4MyAwLS45MDgtLjM1MS0uOTg2LS44NDItLjA4Ny0uNTQ2LjI4NC0xLjA1OS44My0xLjE0NiAxLjkwMS0uMzA0IDMuNzYxLS44MzcgNS41MjctMS41ODQuNTEtLjIxNCAxLjA5Ni4wMjEgMS4zMTEuNTMxLjIxNS41MDktLjAyMiAxLjA5Ni0uNTMxIDEuMzExLTEuOTE1LjgxLTMuOTMgMS4zODgtNS45OTEgMS43MTctLjA1NS4wMDktLjEwOC4wMTMtLjE2LjAxM3oiLz48cGF0aCBkPSJtNDQuMjY3IDQ5Ljc5NWMtLjI5OSAwLS41OTUtLjEzNC0uNzkyLS4zODktLjMzNy0uNDM4LS4yNTctMS4wNjUuMTgtMS40MDIgMS42My0xLjI1OSAzLjA5NS0yLjcyNSA0LjM1NC00LjM1Ni4zMzYtLjQzOC45NjQtLjUxNyAxLjQwMi0uMTgxLjQzOC4zMzguNTE4Ljk2Ni4xODEgMS40MDMtMS4zNjMgMS43NjctMi45NDkgMy4zNTQtNC43MTQgNC43MTYtLjE4Mi4xNDEtLjM5Ny4yMDktLjYxMS4yMDl6Ii8+PHBhdGggZD0ibTUyLjAzMyAzOS43MjdjLS4xMyAwLS4yNjItLjAyNS0uMzg5LS4wNzktLjUwOS0uMjE1LS43NDctLjgwMi0uNTMxLTEuMzExLjc0Ny0xLjc2NyAxLjI4LTMuNjI2IDEuNTgzLTUuNTI2LjA4Ni0uNTQ2LjYwMS0uOTE5IDEuMTQ1LS44My41NDUuMDg3LjkxNy42LjgzIDEuMTQ1LS4zMjkgMi4wNjEtLjkwNiA0LjA3Ni0xLjcxNiA1Ljk5MS0uMTYyLjM4MS0uNTMzLjYxLS45MjIuNjF6Ii8+PHBhdGggZD0ibTUuOTY3IDM5LjcyN2MtLjM5IDAtLjc2LS4yMjktLjkyMS0uNjEtLjgxLTEuOTE1LTEuMzg4LTMuOTMxLTEuNzE2LTUuOTkxLS4wODctLjU0NS4yODQtMS4wNTguODMtMS4xNDUuNTQtLjA4OSAxLjA1OS4yODQgMS4xNDUuODMuMzA0IDEuOS44MzYgMy43NiAxLjU4MyA1LjUyNi4yMTUuNTA5LS4wMjIgMS4wOTYtLjUzMSAxLjMxMS0uMTI4LjA1My0uMjYuMDc5LS4zOS4wNzl6Ii8+PHBhdGggZD0ibTEzLjc0IDQ5LjgwMWMtLjIxNCAwLS40MjktLjA2OC0uNjExLS4yMDktMS43NjctMS4zNjQtMy4zNTMtMi45NS00LjcxNS00LjcxNC0uMzM3LS40MzgtLjI1Ny0xLjA2NS4xOC0xLjQwMi40MzctLjMzOCAxLjA2NC0uMjU4IDEuNDAzLjE4IDEuMjU4IDEuNjI5IDIuNzIzIDMuMDk0IDQuMzU1IDQuMzU0LjQzNy4zMzcuNTE4Ljk2NS4xOCAxLjQwMi0uMTk3LjI1NS0uNDkzLjM4OS0uNzkyLjM4OXoiLz48cGF0aCBkPSJtMjUuMDMzIDU0LjY4NGMtLjA1MiAwLS4xMDUtLjAwNC0uMTU5LS4wMTMtMi4wNjEtLjMyOS00LjA3Ni0uOTA3LTUuOTkxLTEuNzE3LS41MDktLjIxNS0uNzQ3LS44MDItLjUzMS0xLjMxMS4yMTUtLjUxLjgwMS0uNzQ1IDEuMzExLS41MzEgMS43NjYuNzQ3IDMuNjI2IDEuMjggNS41MjcgMS41ODQuNTQ1LjA4Ny45MTcuNi44MyAxLjE0Ni0uMDc5LjQ5MS0uNTA0Ljg0Mi0uOTg3Ljg0MnoiLz48cGF0aCBkPSJtMTkuMjc0IDYuOTY3Yy0uMzkgMC0uNzYtLjIyOS0uOTIxLS42MS0uMjE1LS41MDkuMDIyLTEuMDk2LjUzMS0xLjMxMSAxLjkxNS0uODEgMy45My0xLjM4OCA1Ljk5MS0xLjcxNy41NDUtLjA4OSAxLjA1OC4yODUgMS4xNDUuODI5LjA4Ny41NDYtLjI4NCAxLjA1OS0uODMgMS4xNDYtMS45MDEuMzA0LTMuNzYxLjgzNy01LjUyNyAxLjU4NC0uMTI3LjA1My0uMjU5LjA3OS0uMzg5LjA3OXoiLz48cGF0aCBkPSJtOS4xOTkgMTQuNzQxYy0uMjEzIDAtLjQyOC0uMDY4LS42MS0uMjA4LS40MzgtLjMzOC0uNTE4LS45NjYtLjE4MS0xLjQwMyAxLjM2My0xLjc2NyAyLjk0OS0zLjM1NCA0LjcxNC00LjcxNi40MzctLjMzNyAxLjA2NC0uMjU4IDEuNDAzLjE4LjMzNy40MzguMjU3IDEuMDY1LS4xOCAxLjQwMi0xLjYzIDEuMjU5LTMuMDk1IDIuNzI1LTQuMzU0IDQuMzU2LS4xOTcuMjU1LS40OTIuMzg5LS43OTIuMzg5eiIvPjxwYXRoIGQ9Im00LjMxOCAyNi4wMzJjLS4wNTMgMC0uMTA1LS4wMDQtLjE1OS0uMDEzLS41NDUtLjA4Ny0uOTE3LS42LS44My0xLjE0NS4zMjktMi4wNjEuOTA2LTQuMDc2IDEuNzE2LTUuOTkxLjIxNS0uNTA5LjgwMS0uNzQ3IDEuMzExLS41MzEuNTA5LjIxNS43NDcuODAyLjUzMSAxLjMxMS0uNzQ3IDEuNzY3LTEuMjggMy42MjYtMS41ODMgNS41MjYtLjA3OC40OTMtLjUwMy44NDMtLjk4Ni44NDN6Ii8+PC9nPjxjaXJjbGUgY3g9IjQiIGN5PSIyOSIgZmlsbD0iI2RkMzUyZSIgcj0iNCIvPjxjaXJjbGUgY3g9IjU0IiBjeT0iMjkiIGZpbGw9IiNkZDM1MmUiIHI9IjQiLz48Y2lyY2xlIGN4PSIyOSIgY3k9IjU0IiBmaWxsPSIjZGQzNTJlIiByPSI0Ii8+PGNpcmNsZSBjeD0iMjkiIGN5PSI0IiBmaWxsPSIjZGQzNTJlIiByPSI0Ii8+PHBhdGggZD0ibTIxIDMyLTgtNHYtOGw4IDR6IiBmaWxsPSIjZDhhNTE2Ii8+PHBhdGggZD0ibTIxIDMyIDgtNHYtOGwtOCA0eiIgZmlsbD0iI2ViYmExNiIvPjxwYXRoIGQ9Im0yMSAyNC04LTQgOC00IDggNHoiIGZpbGw9IiNjNDkzMTgiLz48cGF0aCBkPSJtMzcgMzItOC00di04bDggNHoiIGZpbGw9IiNjNTQxMWUiLz48cGF0aCBkPSJtMzcgMzIgOC00di04bC04IDR6IiBmaWxsPSIjYWYzMzFiIi8+PHBhdGggZD0ibTM3IDI0LTgtNCA4LTQgOCA0eiIgZmlsbD0iIzk2MjkxYSIvPjxwYXRoIGQ9Im0yOSA0NC04LTR2LThsOCA0eiIgZmlsbD0iI2VkOGExOSIvPjxwYXRoIGQ9Im0yOSA0NCA4LTR2LThsLTggNHoiIGZpbGw9IiNkMzc2MWEiLz48cGF0aCBkPSJtMjkgMzYtOC00IDgtNCA4IDR6IiBmaWxsPSIjYzE2OTFhIi8+PC9zdmc+Cg==",
+  "icon": "data:image/png;base64,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",
   "children": [
     {
-      "title": {
-        "en": "View example",
-        "es": "Vista de ejemplo"
+      "en": {
+        "title": "Connect to a Firebird DB",
+        "description": "Configurate connection credentials",
+        "title_options": null,
+        "options": null
       },
-      "description": {
-        "en": "Culpa reprehenderit occaecat velit nisi minim ipsum nostrud consequat excepteur proident mollit. Pariatur cupidatat commodo eiusmod id ex nostrud veniam. Tempor fugiat eiusmod nostrud sit ullamco duis quis minim dolore esse sunt excepteur enim enim. Nulla laborum enim consectetur reprehenderit dolore aliquip esse eu elit et quis nisi nulla. Nulla proident dolor irure quis eiusmod minim consectetur.",
-        "es": "Culpa reprehenderit occaecat velit nisi minim ipsum nostrud consequat excepteur proident mollit. Pariatur cupidatat commodo eiusmod id ex nostrud veniam. Tempor fugiat eiusmod nostrud sit ullamco duis quis minim dolore esse sunt excepteur enim enim. Nulla laborum enim consectetur reprehenderit dolore aliquip esse eu elit et quis nisi nulla. Nulla proident dolor irure quis eiusmod minim consectetur."
+      "es": {
+        "title": "Conectarse a bd Firebird",
+        "description": "Configurar credenciales de conexión",
+        "title_options": null,
+        "options": null
       },
       "form": {
         "css": "modal-lg",
-        "style": "min-width:1024px;",
         "inputs": [
           {
             "type": "input",
-            "placeholder": "this is a placeholder",
+            "placeholder": "host:/path/database.fdb",
             "title": {
-              "en": "Input text:",
-              "es": "Entrada de texto:"
+              "es": "DSN Hostname de Conexion:",
+              "en": "DSN Hostname:"
             },
-            "id": "input_1",
-            "css": "col-md-6"
+            "description": {
+              "es": "Hostname asignado en el DSN",
+              "en": "Hostname from the DSN"
+            },
+            "id": "dsn",
+            "css": "col-md-12"
           },
           {
-            "type": "select",
+            "type": "input",
+            "placeholder": "SYSDBA",
             "title": {
-              "es": "Selector de datos:",
-              "en": "Input select:"
+              "es": "Usuario:",
+              "en": "User:"
             },
-            "options": [
-              {
-                "title": "--Seleccione--",
-                "value": ""
-              },
-              {
-                "title": "name",
-                "value": "name"
-              },
-              {
-                "title": "class",
-                "value": "class"
-              }
-            ],
-            "help": {
-              "es": "Help example",
-              "en": "Help example",
-              "cn": "Help example"
+            "description": {
+              "es": "Nombre de usuario de la base de datos",
+              "en": "Name of the user to connect to the data base"
             },
-            "id": "option_",
-            "css": "col-md-6"
+            "id": "user",
+            "css": "col-md-5"
           },
           {
-            "type": "file_select",
-            "placeholder": {
-              "es": "Ruta a archivo",
-              "en": "Path to file"
-            },
+            "type": "input",
+            "placeholder": "masterkey",
             "title": {
-              "es": "Seleccionar un archivo:",
-              "en": "Select a file:"
+              "es": "Contraseña:",
+              "en": "Password:"
             },
-            "help": {
-              "es": "Ruta donde está el archivo",
-              "en": "Path to file"
+            "description": {
+              "es": "Password del usuario previamente usado",
+              "en": "Password from the user previously used"
             },
-            "id": "pdf",
-            "css": "col-md-6"
+            "id": "password",
+            "css": "col-md-5"
           },
           {
-            "type": "file_new",
-            "placeholder": {
-              "es": "Archivo nuevo",
-              "en": "New File"
-            },
+            "type": "input",
+            "placeholder": "var",
             "title": {
-              "es": "Crear Archivo Nuevo:",
-              "en": "Create new file:"
+              "es": "Asignar a variable:",
+              "en": "Assign to variable:"
             },
-            "help": {
-              "es": "Ruta donde se creara el archivo nuevo",
-              "en": "Path to new file"
+            "description": {
+              "es": "Variable donde se desea guardar el resultado.",
+              "en": "Varialbe where to store the result."
             },
-            "id": "pdf",
-            "css": "col-md-6"
-          },
-          {
-            "type": "folder_select",
-            "placeholder": {
-              "es": "Ruta a Carpeta",
-              "en": "Path to folder"
-            },
-            "title": {
-              "es": "Seleccionar una carpeta:",
-              "en": "Select a Folder:"
-            },
-            "help": {
-              "es": "Ruta a la carpeta",
-              "en": "Path to folder"
-            },
-            "id": "folder",
-            "css": "col-md-6"
-          },
-          {
-            "type": "checkbox",
-            "placeholder": {
-              "es": "Checkbox",
-              "en": "Checkbox"
-            },
-            "title": {
-              "es": "Checkbox title:",
-              "en": "Checkbox title:"
-            },
-            "help": {
-              "es": "Ayuda de Checkbox",
-              "en": "Checkbox help"
-            },
-            "id": "check",
-            "css": "col-md-6"
-          },
-          {
-            "type": "textarea",
-            "placeholder": {
-              "es": "Textarea placeholder",
-              "en": "Textarea placeholder"
-            },
-            "title": {
-              "es": "Textarea title:",
-              "en": "Textarea  title:"
-            },
-            "help": {
-              "es": "Ayuda de Textarea",
-              "en": "Textarea help"
-            },
-            "id": "Textarea",
-            "css": "col-md-6"
-          },
-          {
-            "type": "label",
-            "title": {
-              "es": "Qui non minim et do non amet consectetur culpa commodo incididunt cillum. Aliquip consequat deserunt incididunt nulla ex elit proident laborum.",
-              "en": "Qui non minim et do non amet consectetur culpa commodo incididunt cillum. Aliquip consequat deserunt incididunt nulla ex elit proident laborum."
-            },
-            "id": "label",
-            "css": "col-md-6"
+            "id": "result",
+            "remove_vars": true,
+            "css": "col-md-5"
           }
         ]
       },
-      "video_youtube": "aMV6cXPMMSo",
-      "icon": "data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1OCA1OCIgaGVpZ2h0PSI1MTJweCIgdmlld0JveD0iMCAwIDU4IDU4IiB3aWR0aD0iNTEycHgiPjxwYXRoIGQ9Im0zNyAxNi04IDR2OGw4IDQgOC00di04eiIgZmlsbD0iIzk2MjkxYSIvPjxwYXRoIGQ9Im0yMSAxNi04IDR2OGw4IDQgOC00di04eiIgZmlsbD0iI2M0OTMxOCIvPjxwYXRoIGQ9Im0yOSAyOC04IDR2OGw4IDQgOC00di04eiIgZmlsbD0iI2MxNjkxYSIvPjxnIGZpbGw9IiM2MWI4NzIiPjxwYXRoIGQ9Im01My42ODIgMjYuMDMyYy0uNDgyIDAtLjkwOC0uMzUxLS45ODYtLjg0My0uMzA0LTEuOS0uODM2LTMuNzYtMS41ODMtNS41MjYtLjIxNS0uNTA5LjAyMi0xLjA5Ni41MzEtMS4zMTEuNTEtLjIxNiAxLjA5Ni4wMjIgMS4zMTEuNTMxLjgxIDEuOTE1IDEuMzg4IDMuOTMxIDEuNzE2IDUuOTkxLjA4Ny41NDUtLjI4NCAxLjA1OC0uODMgMS4xNDUtLjA1My4wMDktLjEwNy4wMTMtLjE1OS4wMTN6Ii8+PHBhdGggZD0ibTQ4Ljc5NSAxNC43MzNjLS4yOTkgMC0uNTk1LS4xMzQtLjc5Mi0uMzg5LTEuMjU4LTEuNjI5LTIuNzIzLTMuMDk0LTQuMzU1LTQuMzU0LS40MzctLjMzNy0uNTE4LS45NjUtLjE4LTEuNDAycy45NjYtLjUxNyAxLjQwMy0uMThjMS43NjcgMS4zNjQgMy4zNTMgMi45NSA0LjcxNSA0LjcxNC4zMzcuNDM4LjI1NyAxLjA2NS0uMTggMS40MDItLjE4Mi4xNDEtLjM5Ny4yMDktLjYxMS4yMDl6Ii8+PHBhdGggZD0ibTM4LjcyNiA2Ljk2N2MtLjEzIDAtLjI2Mi0uMDI1LS4zODktLjA3OS0xLjc2Ni0uNzQ3LTMuNjI2LTEuMjgtNS41MjctMS41ODQtLjU0NS0uMDg3LS45MTctLjYtLjgzLTEuMTQ2LjA4Ny0uNTQ1LjYwMS0uOTE4IDEuMTQ1LS44MjkgMi4wNjEuMzI5IDQuMDc2LjkwNyA1Ljk5MSAxLjcxNy41MDkuMjE1Ljc0Ny44MDIuNTMxIDEuMzExLS4xNjEuMzgxLS41MzEuNjEtLjkyMS42MXoiLz48cGF0aCBkPSJtMzIuOTY3IDU0LjY4NGMtLjQ4MyAwLS45MDgtLjM1MS0uOTg2LS44NDItLjA4Ny0uNTQ2LjI4NC0xLjA1OS44My0xLjE0NiAxLjkwMS0uMzA0IDMuNzYxLS44MzcgNS41MjctMS41ODQuNTEtLjIxNCAxLjA5Ni4wMjEgMS4zMTEuNTMxLjIxNS41MDktLjAyMiAxLjA5Ni0uNTMxIDEuMzExLTEuOTE1LjgxLTMuOTMgMS4zODgtNS45OTEgMS43MTctLjA1NS4wMDktLjEwOC4wMTMtLjE2LjAxM3oiLz48cGF0aCBkPSJtNDQuMjY3IDQ5Ljc5NWMtLjI5OSAwLS41OTUtLjEzNC0uNzkyLS4zODktLjMzNy0uNDM4LS4yNTctMS4wNjUuMTgtMS40MDIgMS42My0xLjI1OSAzLjA5NS0yLjcyNSA0LjM1NC00LjM1Ni4zMzYtLjQzOC45NjQtLjUxNyAxLjQwMi0uMTgxLjQzOC4zMzguNTE4Ljk2Ni4xODEgMS40MDMtMS4zNjMgMS43NjctMi45NDkgMy4zNTQtNC43MTQgNC43MTYtLjE4Mi4xNDEtLjM5Ny4yMDktLjYxMS4yMDl6Ii8+PHBhdGggZD0ibTUyLjAzMyAzOS43MjdjLS4xMyAwLS4yNjItLjAyNS0uMzg5LS4wNzktLjUwOS0uMjE1LS43NDctLjgwMi0uNTMxLTEuMzExLjc0Ny0xLjc2NyAxLjI4LTMuNjI2IDEuNTgzLTUuNTI2LjA4Ni0uNTQ2LjYwMS0uOTE5IDEuMTQ1LS44My41NDUuMDg3LjkxNy42LjgzIDEuMTQ1LS4zMjkgMi4wNjEtLjkwNiA0LjA3Ni0xLjcxNiA1Ljk5MS0uMTYyLjM4MS0uNTMzLjYxLS45MjIuNjF6Ii8+PHBhdGggZD0ibTUuOTY3IDM5LjcyN2MtLjM5IDAtLjc2LS4yMjktLjkyMS0uNjEtLjgxLTEuOTE1LTEuMzg4LTMuOTMxLTEuNzE2LTUuOTkxLS4wODctLjU0NS4yODQtMS4wNTguODMtMS4xNDUuNTQtLjA4OSAxLjA1OS4yODQgMS4xNDUuODMuMzA0IDEuOS44MzYgMy43NiAxLjU4MyA1LjUyNi4yMTUuNTA5LS4wMjIgMS4wOTYtLjUzMSAxLjMxMS0uMTI4LjA1My0uMjYuMDc5LS4zOS4wNzl6Ii8+PHBhdGggZD0ibTEzLjc0IDQ5LjgwMWMtLjIxNCAwLS40MjktLjA2OC0uNjExLS4yMDktMS43NjctMS4zNjQtMy4zNTMtMi45NS00LjcxNS00LjcxNC0uMzM3LS40MzgtLjI1Ny0xLjA2NS4xOC0xLjQwMi40MzctLjMzOCAxLjA2NC0uMjU4IDEuNDAzLjE4IDEuMjU4IDEuNjI5IDIuNzIzIDMuMDk0IDQuMzU1IDQuMzU0LjQzNy4zMzcuNTE4Ljk2NS4xOCAxLjQwMi0uMTk3LjI1NS0uNDkzLjM4OS0uNzkyLjM4OXoiLz48cGF0aCBkPSJtMjUuMDMzIDU0LjY4NGMtLjA1MiAwLS4xMDUtLjAwNC0uMTU5LS4wMTMtMi4wNjEtLjMyOS00LjA3Ni0uOTA3LTUuOTkxLTEuNzE3LS41MDktLjIxNS0uNzQ3LS44MDItLjUzMS0xLjMxMS4yMTUtLjUxLjgwMS0uNzQ1IDEuMzExLS41MzEgMS43NjYuNzQ3IDMuNjI2IDEuMjggNS41MjcgMS41ODQuNTQ1LjA4Ny45MTcuNi44MyAxLjE0Ni0uMDc5LjQ5MS0uNTA0Ljg0Mi0uOTg3Ljg0MnoiLz48cGF0aCBkPSJtMTkuMjc0IDYuOTY3Yy0uMzkgMC0uNzYtLjIyOS0uOTIxLS42MS0uMjE1LS41MDkuMDIyLTEuMDk2LjUzMS0xLjMxMSAxLjkxNS0uODEgMy45My0xLjM4OCA1Ljk5MS0xLjcxNy41NDUtLjA4OSAxLjA1OC4yODUgMS4xNDUuODI5LjA4Ny41NDYtLjI4NCAxLjA1OS0uODMgMS4xNDYtMS45MDEuMzA0LTMuNzYxLjgzNy01LjUyNyAxLjU4NC0uMTI3LjA1My0uMjU5LjA3OS0uMzg5LjA3OXoiLz48cGF0aCBkPSJtOS4xOTkgMTQuNzQxYy0uMjEzIDAtLjQyOC0uMDY4LS42MS0uMjA4LS40MzgtLjMzOC0uNTE4LS45NjYtLjE4MS0xLjQwMyAxLjM2My0xLjc2NyAyLjk0OS0zLjM1NCA0LjcxNC00LjcxNi40MzctLjMzNyAxLjA2NC0uMjU4IDEuNDAzLjE4LjMzNy40MzguMjU3IDEuMDY1LS4xOCAxLjQwMi0xLjYzIDEuMjU5LTMuMDk1IDIuNzI1LTQuMzU0IDQuMzU2LS4xOTcuMjU1LS40OTIuMzg5LS43OTIuMzg5eiIvPjxwYXRoIGQ9Im00LjMxOCAyNi4wMzJjLS4wNTMgMC0uMTA1LS4wMDQtLjE1OS0uMDEzLS41NDUtLjA4Ny0uOTE3LS42LS44My0xLjE0NS4zMjktMi4wNjEuOTA2LTQuMDc2IDEuNzE2LTUuOTkxLjIxNS0uNTA5LjgwMS0uNzQ3IDEuMzExLS41MzEuNTA5LjIxNS43NDcuODAyLjUzMSAxLjMxMS0uNzQ3IDEuNzY3LTEuMjggMy42MjYtMS41ODMgNS41MjYtLjA3OC40OTMtLjUwMy44NDMtLjk4Ni44NDN6Ii8+PC9nPjxjaXJjbGUgY3g9IjQiIGN5PSIyOSIgZmlsbD0iI2RkMzUyZSIgcj0iNCIvPjxjaXJjbGUgY3g9IjU0IiBjeT0iMjkiIGZpbGw9IiNkZDM1MmUiIHI9IjQiLz48Y2lyY2xlIGN4PSIyOSIgY3k9IjU0IiBmaWxsPSIjZGQzNTJlIiByPSI0Ii8+PGNpcmNsZSBjeD0iMjkiIGN5PSI0IiBmaWxsPSIjZGQzNTJlIiByPSI0Ii8+PHBhdGggZD0ibTIxIDMyLTgtNHYtOGw4IDR6IiBmaWxsPSIjZDhhNTE2Ii8+PHBhdGggZD0ibTIxIDMyIDgtNHYtOGwtOCA0eiIgZmlsbD0iI2ViYmExNiIvPjxwYXRoIGQ9Im0yMSAyNC04LTQgOC00IDggNHoiIGZpbGw9IiNjNDkzMTgiLz48cGF0aCBkPSJtMzcgMzItOC00di04bDggNHoiIGZpbGw9IiNjNTQxMWUiLz48cGF0aCBkPSJtMzcgMzIgOC00di04bC04IDR6IiBmaWxsPSIjYWYzMzFiIi8+PHBhdGggZD0ibTM3IDI0LTgtNCA4LTQgOCA0eiIgZmlsbD0iIzk2MjkxYSIvPjxwYXRoIGQ9Im0yOSA0NC04LTR2LThsOCA0eiIgZmlsbD0iI2VkOGExOSIvPjxwYXRoIGQ9Im0yOSA0NCA4LTR2LThsLTggNHoiIGZpbGw9IiNkMzc2MWEiLz48cGF0aCBkPSJtMjkgMzYtOC00IDgtNCA4IDR6IiBmaWxsPSIjYzE2OTFhIi8+PC9zdmc+Cg==",
-      "module": "example_view",
-      "module_name": "example",
+      "video_youtube": "",
+      "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAT2SURBVHjaYvz//z8DEeD/30dAxMiqB2L/vgQkmdhsiNEIEEAs+KX/ftvy9/sWBkYGJg5bZg5fRkY+kCizHFDw55t0JmY5Zk5fZp4YRiY+XCYABBDDfxzg94cl3+5p/XyZ/u/3Q1xq/n47/OOx57fb0r/etP37+xGrGoAAwmLBvz8ff9z1/HZD6++Xw/+JAH8+bfl2TRqk/jMW9QABhG7B36+Xvp2R+n7FEmjNf6IBUPH3q5ZfT3P/fr0ETQoggFAs+Pv50rdjUj+uRfwnC/y4HvH1MPfvFyh2AAQQwoJ/vz9+O6L1/aQVkEGeBUCNQO1f9/L8ebUFLggQQAgLfpyO+LZT+t83LFH682r51608P85E/Hm+Bb8df98eBqr8tksa7kqAAGKCpKV/r4/8fbiZRTaLkVMOPZn9/vT/7UVGZjmGbx9+Hg//vkX654nIP3emAbX8OpuBpphJyIZZyOf/lw+/L5ZBRAACiBGS0X7u9vz34RJHwHVGVkSK/vtky6+T6f9/f8RM3Ky6Vf+/PmLklmPVrkLPOk+3/DwcAWRw+l4DKgAIIJAP/r27/PfREWa5WGTT/3959HNP5P/Pnxh+MGKiv3e2sqhkY5oO8oSYHUTN76vTgFyAAAJZ8OfaUoafDCyyPigK2QQY//MDxYEks4gthA1H/15c+rHa6u/9rZgWgFwJVvP39mYgFyCAwD64f4jhx39GET0UdWx87L7bWZSjOaKvsftsA5JMfHoMPxiQ0a+d6diLB7Ds/zeP/r2+DBBAoLLo3+NLEBPRPSuiy+YyA24fk5jNv0cXUeL/xwccFkAL0P8fHgIEEMu/F5cZfjISKEp/fPpzcuqfo8AwRVHJyMGPRfHHR3AD/z27DBBALAzfPjL8xFli///w6Peetj/nl2KVZdbxwVIA3z0MigMohwEggFgY/oGDDGjb08tM0rrISv+cXvprZTq+st4yG1Pw363DCBf/+Q8QQCwMQG9CLLh5GNmCv5e2/FqE13THbCZJXXQfv3v05+gSJO8wAAQQE5OMLjRVndqMrPTXsnK0NIOMmBVs2YI6MW39tRxFF6OAPEAAgZIpkzgo/f29ePj/60dQb9448v/pQzwWsMXPxGL6rIy/JzYjK2OS1gMIILAFaragUPv5//eKVlhA/oeI4ESoyeLftcM/Gzz+7FmMrIaRhY9JThcggFjAoRnze+0UIOP3jiXMDjHMurYg/b/wJdwfVR6svqAY/vfq0b8rh/49uIQljdn4AkmAAIIWdt9itP6/eAjii8tzzjrx797FH2UeDJQBjq4dQLcCBBC0uGbP6ILm74cPf00oZRKTRy55yEDMmragkGBgAAggFph3fID8v2cOg9LuhiVMynqMgvL/nz8k2/lsWd0QBkAAMcGF2LtXgQpCYDHy4//f44eY9WwZfv0nD7HldTGpQLMIQAAxIrfs/t24/CPG/f8nUA3DsXTHj0RyooElIIa9BZGIAQKICaX41NDlWLyTkQ2Ut/9u28Js50tq0LP4oJgOBAABxIjZNv3/5NHP3LS/Rw9zLFr5a0Lrv6uXiA33xi7WJPTSCSCAcDcdly3+Zm3+5/Ch7/HhX0S58KPvAe7/HmNvYQIEEAOBZuGmzSBy62agZV94OdHQV22NnxWlfy9fwmMCQAAxEtl8BwXdo0d/Dx36/wCUdpns7Zjk5Rnl5AjqAggwAB4FwGj3ntBVAAAAAElFTkSuQmCC",
+      "module": "connect",
+      "module_name": "Firebird",
+      "visible": true,
+      "options": false,
       "father": "module",
       "group": "scripts",
-      "linux": true,
+      "linux": false,
       "windows": true,
-      "mac": true,
-      "docker": false,
-      "visible": true,
-      "options": false
+      "mac": false,
+      "docker": false
     },
     {
-      "title": {
-        "en": "html example",
-        "es": "html de ejemplo"
+      "en": {
+        "title": "Execute a query",
+        "description": "Execute query",
+        "title_options": null,
+        "options": null
       },
-      "description": {
-        "en": "Culpa reprehenderit occaecat velit nisi minim ipsum nostrud consequat excepteur proident mollit. Pariatur cupidatat commodo eiusmod id ex nostrud veniam. Tempor fugiat eiusmod nostrud sit ullamco duis quis minim dolore esse sunt excepteur enim enim. Nulla laborum enim consectetur reprehenderit dolore aliquip esse eu elit et quis nisi nulla. Nulla proident dolor irure quis eiusmod minim consectetur.",
-        "es": "Culpa reprehenderit occaecat velit nisi minim ipsum nostrud consequat excepteur proident mollit. Pariatur cupidatat commodo eiusmod id ex nostrud veniam. Tempor fugiat eiusmod nostrud sit ullamco duis quis minim dolore esse sunt excepteur enim enim. Nulla laborum enim consectetur reprehenderit dolore aliquip esse eu elit et quis nisi nulla. Nulla proident dolor irure quis eiusmod minim consectetur."
+      "es": {
+        "title": "Ejecutar una query",
+        "description": "Ejecuta una query hacia la bd Firebird",
+        "title_options": null,
+        "options": null
       },
       "form": {
         "css": "modal-lg",
-        "style": "min-width:1024px;",
         "inputs": [
           {
-            "type": "html",
+            "type": "input",
+            "placeholder": "SELECT * from table",
             "title": {
-              "es": "HTML",
-              "en": "HTML"
+              "es": "Query:",
+              "en": "Query:"
             },
-            "src": "index.html",
-            "id": "html",
-            "css": "col-md-12",
-            "style": "height:300px;"
+            "description": {
+              "es": "Query que se desea ejecutar en la base de datos",
+              "en": "Query to execute in the database"
+            },
+            "id": "query",
+            "css": "col-md-12"
+          },
+          {
+            "type": "input",
+            "placeholder": "var",
+            "title": {
+              "es": "Asignar resultado a variable:",
+              "en": "Set result to var:"
+            },
+            "description": {
+              "es": "Variable donde se desea guardar el resultado.",
+              "en": "Varialbe where to store the result."
+            },
+            "help": {
+              "es": "Nombre de variable sin {}",
+              "en": "Variable name without {}"
+            },
+            "id": "result",
+            "remove_vars": true,
+            "css": "col-md-12"
           }
         ]
       },
-      "video_youtube": "aMV6cXPMMSo",
-      "icon": "data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1OCA1OCIgaGVpZ2h0PSI1MTJweCIgdmlld0JveD0iMCAwIDU4IDU4IiB3aWR0aD0iNTEycHgiPjxwYXRoIGQ9Im0zNyAxNi04IDR2OGw4IDQgOC00di04eiIgZmlsbD0iIzk2MjkxYSIvPjxwYXRoIGQ9Im0yMSAxNi04IDR2OGw4IDQgOC00di04eiIgZmlsbD0iI2M0OTMxOCIvPjxwYXRoIGQ9Im0yOSAyOC04IDR2OGw4IDQgOC00di04eiIgZmlsbD0iI2MxNjkxYSIvPjxnIGZpbGw9IiM2MWI4NzIiPjxwYXRoIGQ9Im01My42ODIgMjYuMDMyYy0uNDgyIDAtLjkwOC0uMzUxLS45ODYtLjg0My0uMzA0LTEuOS0uODM2LTMuNzYtMS41ODMtNS41MjYtLjIxNS0uNTA5LjAyMi0xLjA5Ni41MzEtMS4zMTEuNTEtLjIxNiAxLjA5Ni4wMjIgMS4zMTEuNTMxLjgxIDEuOTE1IDEuMzg4IDMuOTMxIDEuNzE2IDUuOTkxLjA4Ny41NDUtLjI4NCAxLjA1OC0uODMgMS4xNDUtLjA1My4wMDktLjEwNy4wMTMtLjE1OS4wMTN6Ii8+PHBhdGggZD0ibTQ4Ljc5NSAxNC43MzNjLS4yOTkgMC0uNTk1LS4xMzQtLjc5Mi0uMzg5LTEuMjU4LTEuNjI5LTIuNzIzLTMuMDk0LTQuMzU1LTQuMzU0LS40MzctLjMzNy0uNTE4LS45NjUtLjE4LTEuNDAycy45NjYtLjUxNyAxLjQwMy0uMThjMS43NjcgMS4zNjQgMy4zNTMgMi45NSA0LjcxNSA0LjcxNC4zMzcuNDM4LjI1NyAxLjA2NS0uMTggMS40MDItLjE4Mi4xNDEtLjM5Ny4yMDktLjYxMS4yMDl6Ii8+PHBhdGggZD0ibTM4LjcyNiA2Ljk2N2MtLjEzIDAtLjI2Mi0uMDI1LS4zODktLjA3OS0xLjc2Ni0uNzQ3LTMuNjI2LTEuMjgtNS41MjctMS41ODQtLjU0NS0uMDg3LS45MTctLjYtLjgzLTEuMTQ2LjA4Ny0uNTQ1LjYwMS0uOTE4IDEuMTQ1LS44MjkgMi4wNjEuMzI5IDQuMDc2LjkwNyA1Ljk5MSAxLjcxNy41MDkuMjE1Ljc0Ny44MDIuNTMxIDEuMzExLS4xNjEuMzgxLS41MzEuNjEtLjkyMS42MXoiLz48cGF0aCBkPSJtMzIuOTY3IDU0LjY4NGMtLjQ4MyAwLS45MDgtLjM1MS0uOTg2LS44NDItLjA4Ny0uNTQ2LjI4NC0xLjA1OS44My0xLjE0NiAxLjkwMS0uMzA0IDMuNzYxLS44MzcgNS41MjctMS41ODQuNTEtLjIxNCAxLjA5Ni4wMjEgMS4zMTEuNTMxLjIxNS41MDktLjAyMiAxLjA5Ni0uNTMxIDEuMzExLTEuOTE1LjgxLTMuOTMgMS4zODgtNS45OTEgMS43MTctLjA1NS4wMDktLjEwOC4wMTMtLjE2LjAxM3oiLz48cGF0aCBkPSJtNDQuMjY3IDQ5Ljc5NWMtLjI5OSAwLS41OTUtLjEzNC0uNzkyLS4zODktLjMzNy0uNDM4LS4yNTctMS4wNjUuMTgtMS40MDIgMS42My0xLjI1OSAzLjA5NS0yLjcyNSA0LjM1NC00LjM1Ni4zMzYtLjQzOC45NjQtLjUxNyAxLjQwMi0uMTgxLjQzOC4zMzguNTE4Ljk2Ni4xODEgMS40MDMtMS4zNjMgMS43NjctMi45NDkgMy4zNTQtNC43MTQgNC43MTYtLjE4Mi4xNDEtLjM5Ny4yMDktLjYxMS4yMDl6Ii8+PHBhdGggZD0ibTUyLjAzMyAzOS43MjdjLS4xMyAwLS4yNjItLjAyNS0uMzg5LS4wNzktLjUwOS0uMjE1LS43NDctLjgwMi0uNTMxLTEuMzExLjc0Ny0xLjc2NyAxLjI4LTMuNjI2IDEuNTgzLTUuNTI2LjA4Ni0uNTQ2LjYwMS0uOTE5IDEuMTQ1LS44My41NDUuMDg3LjkxNy42LjgzIDEuMTQ1LS4zMjkgMi4wNjEtLjkwNiA0LjA3Ni0xLjcxNiA1Ljk5MS0uMTYyLjM4MS0uNTMzLjYxLS45MjIuNjF6Ii8+PHBhdGggZD0ibTUuOTY3IDM5LjcyN2MtLjM5IDAtLjc2LS4yMjktLjkyMS0uNjEtLjgxLTEuOTE1LTEuMzg4LTMuOTMxLTEuNzE2LTUuOTkxLS4wODctLjU0NS4yODQtMS4wNTguODMtMS4xNDUuNTQtLjA4OSAxLjA1OS4yODQgMS4xNDUuODMuMzA0IDEuOS44MzYgMy43NiAxLjU4MyA1LjUyNi4yMTUuNTA5LS4wMjIgMS4wOTYtLjUzMSAxLjMxMS0uMTI4LjA1My0uMjYuMDc5LS4zOS4wNzl6Ii8+PHBhdGggZD0ibTEzLjc0IDQ5LjgwMWMtLjIxNCAwLS40MjktLjA2OC0uNjExLS4yMDktMS43NjctMS4zNjQtMy4zNTMtMi45NS00LjcxNS00LjcxNC0uMzM3LS40MzgtLjI1Ny0xLjA2NS4xOC0xLjQwMi40MzctLjMzOCAxLjA2NC0uMjU4IDEuNDAzLjE4IDEuMjU4IDEuNjI5IDIuNzIzIDMuMDk0IDQuMzU1IDQuMzU0LjQzNy4zMzcuNTE4Ljk2NS4xOCAxLjQwMi0uMTk3LjI1NS0uNDkzLjM4OS0uNzkyLjM4OXoiLz48cGF0aCBkPSJtMjUuMDMzIDU0LjY4NGMtLjA1MiAwLS4xMDUtLjAwNC0uMTU5LS4wMTMtMi4wNjEtLjMyOS00LjA3Ni0uOTA3LTUuOTkxLTEuNzE3LS41MDktLjIxNS0uNzQ3LS44MDItLjUzMS0xLjMxMS4yMTUtLjUxLjgwMS0uNzQ1IDEuMzExLS41MzEgMS43NjYuNzQ3IDMuNjI2IDEuMjggNS41MjcgMS41ODQuNTQ1LjA4Ny45MTcuNi44MyAxLjE0Ni0uMDc5LjQ5MS0uNTA0Ljg0Mi0uOTg3Ljg0MnoiLz48cGF0aCBkPSJtMTkuMjc0IDYuOTY3Yy0uMzkgMC0uNzYtLjIyOS0uOTIxLS42MS0uMjE1LS41MDkuMDIyLTEuMDk2LjUzMS0xLjMxMSAxLjkxNS0uODEgMy45My0xLjM4OCA1Ljk5MS0xLjcxNy41NDUtLjA4OSAxLjA1OC4yODUgMS4xNDUuODI5LjA4Ny41NDYtLjI4NCAxLjA1OS0uODMgMS4xNDYtMS45MDEuMzA0LTMuNzYxLjgzNy01LjUyNyAxLjU4NC0uMTI3LjA1My0uMjU5LjA3OS0uMzg5LjA3OXoiLz48cGF0aCBkPSJtOS4xOTkgMTQuNzQxYy0uMjEzIDAtLjQyOC0uMDY4LS42MS0uMjA4LS40MzgtLjMzOC0uNTE4LS45NjYtLjE4MS0xLjQwMyAxLjM2My0xLjc2NyAyLjk0OS0zLjM1NCA0LjcxNC00LjcxNi40MzctLjMzNyAxLjA2NC0uMjU4IDEuNDAzLjE4LjMzNy40MzguMjU3IDEuMDY1LS4xOCAxLjQwMi0xLjYzIDEuMjU5LTMuMDk1IDIuNzI1LTQuMzU0IDQuMzU2LS4xOTcuMjU1LS40OTIuMzg5LS43OTIuMzg5eiIvPjxwYXRoIGQ9Im00LjMxOCAyNi4wMzJjLS4wNTMgMC0uMTA1LS4wMDQtLjE1OS0uMDEzLS41NDUtLjA4Ny0uOTE3LS42LS44My0xLjE0NS4zMjktMi4wNjEuOTA2LTQuMDc2IDEuNzE2LTUuOTkxLjIxNS0uNTA5LjgwMS0uNzQ3IDEuMzExLS41MzEuNTA5LjIxNS43NDcuODAyLjUzMSAxLjMxMS0uNzQ3IDEuNzY3LTEuMjggMy42MjYtMS41ODMgNS41MjYtLjA3OC40OTMtLjUwMy44NDMtLjk4Ni44NDN6Ii8+PC9nPjxjaXJjbGUgY3g9IjQiIGN5PSIyOSIgZmlsbD0iI2RkMzUyZSIgcj0iNCIvPjxjaXJjbGUgY3g9IjU0IiBjeT0iMjkiIGZpbGw9IiNkZDM1MmUiIHI9IjQiLz48Y2lyY2xlIGN4PSIyOSIgY3k9IjU0IiBmaWxsPSIjZGQzNTJlIiByPSI0Ii8+PGNpcmNsZSBjeD0iMjkiIGN5PSI0IiBmaWxsPSIjZGQzNTJlIiByPSI0Ii8+PHBhdGggZD0ibTIxIDMyLTgtNHYtOGw4IDR6IiBmaWxsPSIjZDhhNTE2Ii8+PHBhdGggZD0ibTIxIDMyIDgtNHYtOGwtOCA0eiIgZmlsbD0iI2ViYmExNiIvPjxwYXRoIGQ9Im0yMSAyNC04LTQgOC00IDggNHoiIGZpbGw9IiNjNDkzMTgiLz48cGF0aCBkPSJtMzcgMzItOC00di04bDggNHoiIGZpbGw9IiNjNTQxMWUiLz48cGF0aCBkPSJtMzcgMzIgOC00di04bC04IDR6IiBmaWxsPSIjYWYzMzFiIi8+PHBhdGggZD0ibTM3IDI0LTgtNCA4LTQgOCA0eiIgZmlsbD0iIzk2MjkxYSIvPjxwYXRoIGQ9Im0yOSA0NC04LTR2LThsOCA0eiIgZmlsbD0iI2VkOGExOSIvPjxwYXRoIGQ9Im0yOSA0NCA4LTR2LThsLTggNHoiIGZpbGw9IiNkMzc2MWEiLz48cGF0aCBkPSJtMjkgMzYtOC00IDgtNCA4IDR6IiBmaWxsPSIjYzE2OTFhIi8+PC9zdmc+Cg==",
-      "module": "example_html",
-      "module_name": "example",
+      "video_youtube": "",
+      "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAT2SURBVHjaYvz//z8DEeD/30dAxMiqB2L/vgQkmdhsiNEIEEAs+KX/ftvy9/sWBkYGJg5bZg5fRkY+kCizHFDw55t0JmY5Zk5fZp4YRiY+XCYABBDDfxzg94cl3+5p/XyZ/u/3Q1xq/n47/OOx57fb0r/etP37+xGrGoAAwmLBvz8ff9z1/HZD6++Xw/+JAH8+bfl2TRqk/jMW9QABhG7B36+Xvp2R+n7FEmjNf6IBUPH3q5ZfT3P/fr0ETQoggFAs+Pv50rdjUj+uRfwnC/y4HvH1MPfvFyh2AAQQwoJ/vz9+O6L1/aQVkEGeBUCNQO1f9/L8ebUFLggQQAgLfpyO+LZT+t83LFH682r51608P85E/Hm+Bb8df98eBqr8tksa7kqAAGKCpKV/r4/8fbiZRTaLkVMOPZn9/vT/7UVGZjmGbx9+Hg//vkX654nIP3emAbX8OpuBpphJyIZZyOf/lw+/L5ZBRAACiBGS0X7u9vz34RJHwHVGVkSK/vtky6+T6f9/f8RM3Ky6Vf+/PmLklmPVrkLPOk+3/DwcAWRw+l4DKgAIIJAP/r27/PfREWa5WGTT/3959HNP5P/Pnxh+MGKiv3e2sqhkY5oO8oSYHUTN76vTgFyAAAJZ8OfaUoafDCyyPigK2QQY//MDxYEks4gthA1H/15c+rHa6u/9rZgWgFwJVvP39mYgFyCAwD64f4jhx39GET0UdWx87L7bWZSjOaKvsftsA5JMfHoMPxiQ0a+d6diLB7Ds/zeP/r2+DBBAoLLo3+NLEBPRPSuiy+YyA24fk5jNv0cXUeL/xwccFkAL0P8fHgIEEMu/F5cZfjISKEp/fPpzcuqfo8AwRVHJyMGPRfHHR3AD/z27DBBALAzfPjL8xFli///w6Peetj/nl2KVZdbxwVIA3z0MigMohwEggFgY/oGDDGjb08tM0rrISv+cXvprZTq+st4yG1Pw363DCBf/+Q8QQCwMQG9CLLh5GNmCv5e2/FqE13THbCZJXXQfv3v05+gSJO8wAAQQE5OMLjRVndqMrPTXsnK0NIOMmBVs2YI6MW39tRxFF6OAPEAAgZIpkzgo/f29ePj/60dQb9448v/pQzwWsMXPxGL6rIy/JzYjK2OS1gMIILAFaragUPv5//eKVlhA/oeI4ESoyeLftcM/Gzz+7FmMrIaRhY9JThcggFjAoRnze+0UIOP3jiXMDjHMurYg/b/wJdwfVR6svqAY/vfq0b8rh/49uIQljdn4AkmAAIIWdt9itP6/eAjii8tzzjrx797FH2UeDJQBjq4dQLcCBBC0uGbP6ILm74cPf00oZRKTRy55yEDMmragkGBgAAggFph3fID8v2cOg9LuhiVMynqMgvL/nz8k2/lsWd0QBkAAMcGF2LtXgQpCYDHy4//f44eY9WwZfv0nD7HldTGpQLMIQAAxIrfs/t24/CPG/f8nUA3DsXTHj0RyooElIIa9BZGIAQKICaX41NDlWLyTkQ2Ut/9u28Js50tq0LP4oJgOBAABxIjZNv3/5NHP3LS/Rw9zLFr5a0Lrv6uXiA33xi7WJPTSCSCAcDcdly3+Zm3+5/Ch7/HhX0S58KPvAe7/HmNvYQIEEAOBZuGmzSBy62agZV94OdHQV22NnxWlfy9fwmMCQAAxEtl8BwXdo0d/Dx36/wCUdpns7Zjk5Rnl5AjqAggwAB4FwGj3ntBVAAAAAElFTkSuQmCC",
+      "module": "execute",
+      "module_name": "Firebird",
+      "visible": true,
+      "options": false,
       "father": "module",
       "group": "scripts",
-      "linux": true,
+      "linux": false,
       "windows": true,
-      "mac": true,
-      "docker": false,
+      "mac": false,
+      "docker": false
+    },
+    {
+      "en": {
+        "title": "Close connection",
+        "description": "Close oracle connection for session",
+        "title_options": null,
+        "options": null
+      },
+      "es": {
+        "title": "Cerrar conexión",
+        "description": "Cierra una conexión de oracle por sesión",
+        "title_options": null,
+        "options": null
+      },
+      "form": {
+        "css": "modal-md",
+        "inputs": [
+          {
+            "type": "label",
+            "title": {
+              "es": "Cerrará la conexión nombrada",
+              "en": "The named connection will be shut down"
+            },
+            "id": "label",
+            "css": "col-md-10"
+          }
+        ]
+      },
+      "video_youtube": "",
+      "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAT2SURBVHjaYvz//z8DEeD/30dAxMiqB2L/vgQkmdhsiNEIEEAs+KX/ftvy9/sWBkYGJg5bZg5fRkY+kCizHFDw55t0JmY5Zk5fZp4YRiY+XCYABBDDfxzg94cl3+5p/XyZ/u/3Q1xq/n47/OOx57fb0r/etP37+xGrGoAAwmLBvz8ff9z1/HZD6++Xw/+JAH8+bfl2TRqk/jMW9QABhG7B36+Xvp2R+n7FEmjNf6IBUPH3q5ZfT3P/fr0ETQoggFAs+Pv50rdjUj+uRfwnC/y4HvH1MPfvFyh2AAQQwoJ/vz9+O6L1/aQVkEGeBUCNQO1f9/L8ebUFLggQQAgLfpyO+LZT+t83LFH682r51608P85E/Hm+Bb8df98eBqr8tksa7kqAAGKCpKV/r4/8fbiZRTaLkVMOPZn9/vT/7UVGZjmGbx9+Hg//vkX654nIP3emAbX8OpuBpphJyIZZyOf/lw+/L5ZBRAACiBGS0X7u9vz34RJHwHVGVkSK/vtky6+T6f9/f8RM3Ky6Vf+/PmLklmPVrkLPOk+3/DwcAWRw+l4DKgAIIJAP/r27/PfREWa5WGTT/3959HNP5P/Pnxh+MGKiv3e2sqhkY5oO8oSYHUTN76vTgFyAAAJZ8OfaUoafDCyyPigK2QQY//MDxYEks4gthA1H/15c+rHa6u/9rZgWgFwJVvP39mYgFyCAwD64f4jhx39GET0UdWx87L7bWZSjOaKvsftsA5JMfHoMPxiQ0a+d6diLB7Ds/zeP/r2+DBBAoLLo3+NLEBPRPSuiy+YyA24fk5jNv0cXUeL/xwccFkAL0P8fHgIEEMu/F5cZfjISKEp/fPpzcuqfo8AwRVHJyMGPRfHHR3AD/z27DBBALAzfPjL8xFli///w6Peetj/nl2KVZdbxwVIA3z0MigMohwEggFgY/oGDDGjb08tM0rrISv+cXvprZTq+st4yG1Pw363DCBf/+Q8QQCwMQG9CLLh5GNmCv5e2/FqE13THbCZJXXQfv3v05+gSJO8wAAQQE5OMLjRVndqMrPTXsnK0NIOMmBVs2YI6MW39tRxFF6OAPEAAgZIpkzgo/f29ePj/60dQb9448v/pQzwWsMXPxGL6rIy/JzYjK2OS1gMIILAFaragUPv5//eKVlhA/oeI4ESoyeLftcM/Gzz+7FmMrIaRhY9JThcggFjAoRnze+0UIOP3jiXMDjHMurYg/b/wJdwfVR6svqAY/vfq0b8rh/49uIQljdn4AkmAAIIWdt9itP6/eAjii8tzzjrx797FH2UeDJQBjq4dQLcCBBC0uGbP6ILm74cPf00oZRKTRy55yEDMmragkGBgAAggFph3fID8v2cOg9LuhiVMynqMgvL/nz8k2/lsWd0QBkAAMcGF2LtXgQpCYDHy4//f44eY9WwZfv0nD7HldTGpQLMIQAAxIrfs/t24/CPG/f8nUA3DsXTHj0RyooElIIa9BZGIAQKICaX41NDlWLyTkQ2Ut/9u28Js50tq0LP4oJgOBAABxIjZNv3/5NHP3LS/Rw9zLFr5a0Lrv6uXiA33xi7WJPTSCSCAcDcdly3+Zm3+5/Ch7/HhX0S58KPvAe7/HmNvYQIEEAOBZuGmzSBy62agZV94OdHQV22NnxWlfy9fwmMCQAAxEtl8BwXdo0d/Dx36/wCUdpns7Zjk5Rnl5AjqAggwAB4FwGj3ntBVAAAAAElFTkSuQmCC",
+      "module": "close",
+      "module_name": "Firebird",
       "visible": true,
-      "options": false
+      "options": false,
+      "father": "module",
+      "group": "scripts",
+      "linux": false,
+      "windows": true,
+      "mac": false,
+      "docker": false
     }
   ]
 }
